@@ -21,10 +21,6 @@ Antes de ejecutar el proyecto, asegúrate de tener instalado:
 - npm (viene con Node.js)
 - Angular CLI
 
-Instalar Angular CLI:
-```bash
-npm install -g @angular/cli
-```
 
 # 🚀 Ejecución del proyecto
 
@@ -43,6 +39,7 @@ http://localhost:8080
 ```bash
 cd frontend
 npm install
+npm install -g @angular/cli
 ng serve
 ```
 📍 Frontend disponible en:
