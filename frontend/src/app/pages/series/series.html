@@ -1,0 +1,23 @@
+<div class="series-container">
+  <div class="page-header">
+    <h1>Series</h1>
+    <div class="filter-section">
+      <select class="filter-select">
+        <option>Todos los géneros</option>
+        <option>Acción</option>
+        <option>Comedia</option>
+        <option>Drama</option>
+        <option>Terror</option>
+      </select>
+      <input type="text" placeholder="Buscar serie..." class="filter-search">
+    </div>
+  </div>
+
+  <div class="grid-series">
+    <div class="serie-card" *ngFor="let series of series">
+      <div class="serie-image"></div>
+      <h3>{{ series.titulo }}</h3>
+      <button class="btn-detalles">Ver Detalles</button>
+    </div>
+  </div>
+</div>

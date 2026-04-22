@@ -1,0 +1,248 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mi Página Web</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/jpg" href="IMAGENES/logo.jpg">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+  <header>
+    <div class="header-left">
+      <div style="display: flex; align-items: center;">
+        <img src="IMAGENES/logo.jpg" alt="Logo" style="height: 40px; margin-right: 10px;">
+      <h1 class="logo">CineScope</h1>
+      <nav class="menu">
+        <a href="index.html">Inicio</a>
+        <a href="peliculas.html">Películas</a>
+        <a href="Series.html">Series</a>
+        <div class="dropdown">
+          <a href="#">Géneros</a>
+            <div class="dropdown-content">
+                <a href="accion.html">Acción</a>
+                <a href="comedia.html">Comedia</a>
+                <a href="drama.html">Drama</a>
+                <a href="terror.html">Terror</a>
+                <a href="anime.html">Anime</a>
+                <a href="cienciaficcion.html">Ciencia Ficción</a>
+               
+            </div>
+        </div>
+      </nav>
+    </div>
+
+
+     <div class="header-center">
+    <div class="search-links">
+      <a href="contactos.html" class="enlace-header">Contactos</a>
+      <a href="nosotros.html" class="enlace-header">Nosotros</a>
+    </div>
+
+
+</header>
+
+
+   <!-- Banner principal de la página -->
+  <div class="banner">
+    <div class="banner-info">
+      <h2>Serie Destacada</h2>
+      <p>Ellie y Abby se enfrentan por venganza en un mundo roto.</p>
+      <a href="#" class="btn-sinopsis">Ver trailer</a>
+    </div>
+  </div>
+
+  
+  <!-- BARRA DE BÚSQUEDA y botones de sesión -->
+<div class="header-right" style="display: flex; align-items: center; justify-content: flex-end; gap: 10px;">
+
+  <div class="search-container">
+  <input type="text" id="searchInput" placeholder="Buscar...">
+  <button id="btn-registrarse" onclick="abrirRegistro()" style="color: white; background-color: #e50914; padding: 8px 12px; 
+  border: none; border-radius: 5px;">Registrarse</button>
+  <button id="btn-iniciarSesion" onclick="abrirLogin()" style="color: white; background: transparent; border: 1px solid rgb(10, 10, 10);
+   padding: 8px 12px; border-radius: 5px;">Iniciar sesión</button>
+
+
+
+
+  <div id="userMenuContainer"></div>  
+</div>
+
+</div>
+
+  <!-- Modal de Registro -->
+<div id="modalRegistro" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarModal('modalRegistro')">&times;</span>
+    <p class="registro-text">REGISTRO</p>
+    <input type="text" id="regUsuario" placeholder="Usuario">
+    <input type="password" id="regPassword" placeholder="Contraseña">
+    <button onclick="registrarUsuario()">Registrarse</button>
+  </div>
+</div>
+
+  <!-- Modal de Login -->
+<div id="modalLogin" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarModal('modalLogin')">&times;</span>
+    <p class="login-text">Login</p>
+    <input type="text" id="loginUsuario" placeholder="Usuario">
+    <input type="password" id="loginPassword" placeholder="Contraseña">
+    <button onclick="iniciarSesion()">Entrar</button>
+  </div>
+</div>
+
+
+  <!-- Películas de Estreno -->
+  <section class="peliculas" id="estrenos">
+    <h2>Últimos estrenos</h2>
+    <div class="swiper swiper-estrenos">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="imagenes/Demon slayer.jpeg" alt="Pelicula 1">
+          <div class="titulo-pelicula">Demon Slayer</div> 
+        </div>
+        <div class="swiper-slide">
+          <img src="imagenes/los 4.png" alt="Pelicula 2">
+          <div class="titulo-pelicula">Los 4 Fantásticos</div> 
+        </div>
+        <div class="swiper-slide">
+          <img src="imagenes/betterman.png" alt="Pelicula 3">
+          <div class="titulo-pelicula">Better Man</div> 
+        </div>
+        <div class="swiper-slide">
+          <img src="imagenes/flow.png" alt="Pelicula 4">
+          <div class="titulo-pelicula">Flow</div> 
+        </div>
+        <div class="swiper-slide">
+          <img src="imagenes/MINECRAFT.png" alt="Pelicula 5">
+          <div class="titulo-pelicula"> Minecraft</div> 
+        </div>
+        <div class="swiper-slide">
+          <img src="imagenes/conclave.png" alt="Pelicula 6">
+          <div class="titulo-pelicula">Conclave</div>
+        </div> <div class="swiper-slide">
+          <img src="imagenes/destino final.png" alt="Pelicula 7">
+          <div class="titulo-pelicula">Destino Final</div> 
+        </div> <div class="swiper-slide">
+          <img src="imagenes/Capitan america.png" alt="Pelicula 8">
+          <div class="titulo-pelicula">Capitan america</div>
+        </div> <div class="swiper-slide">
+          <img src="imagenes/estado electrico.png" alt="Pelicula 9">
+          <div class="titulo-pelicula">Estado Electrico</div> 
+        </div> <div class="swiper-slide">
+          <img src="imagenes/Mickey 17.png" alt="Pelicula 10">
+          <div class="titulo-pelicula">Mickey : 17</div> 
+        </div>
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+    <button class="estreno-boton btn-ver-todo" onclick="location.href='peliculas.html'">Ver todo</button>
+</section>
+
+  <!-- Películas y series  Recomendadas -->
+<section class="peliculas" id="recomendadas">
+  <h2>Películas y Series recomendadas</h2>
+  <div class="swiper swiper-recomendadas">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="imagenes/Breaking bad.png" alt="Pelicula 1">
+        <div class="titulo-pelicula">Breaking Bad</div> 
+      </div>
+      <div class="swiper-slide">
+        <img src="imagenes/Parasitos.png" alt="Pelicula 3">
+        <div class="titulo-pelicula">Parasitos</div> 
+      </div>
+      <div class="swiper-slide">
+        <img src="imagenes/The Walking dead.png" alt="Pelicula 3">
+        <div class="titulo-pelicula">The Walking dead</div> 
+      </div>
+      <div class="swiper-slide">
+        <img src="imagenes/El hoyo.png" alt="Pelicula 4">
+        <div class="titulo-pelicula">EL hoyo</div>
+      </div>
+      <div class="swiper-slide">
+        <img src="imagenes/better call saul.png" alt="Pelicula 5">
+        <div class="titulo-pelicula"> Better Call Saul</div> 
+      </div>
+      <div class="swiper-slide">
+        <img src="imagenes/shrek.png" alt="Pelicula 6">
+        <div class="titulo-pelicula">Shrek 1</div>
+      </div> <div class="swiper-slide">
+        <img src="imagenes/Mr Robot.png" alt="Pelicula 7">
+        <div class="titulo-pelicula">MrRobot</div> 
+      </div> <div class="swiper-slide">
+        <img src="imagenes/rec.png" alt="Pelicula 8">
+        <div class="titulo-pelicula">Rec 1</div> 
+      </div> <div class="swiper-slide">
+        <img src="imagenes/juego de tronos.png" alt="Pelicula 9">
+        <div class="titulo-pelicula">Juego de tronos</div> 
+      </div> <div class="swiper-slide">
+        <img src="imagenes/Chihiroo.png" alt="Pelicula 10">
+        <div class="titulo-pelicula">El viaje de CHihiro</div> 
+      </div>
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+  <button class="recomendadas-boton btn-ver-todo" onclick="location.href='Series.html'">Ver todo</button>
+</section>
+
+
+
+
+
+
+<!-- Pie de página -->
+  <footer>
+    <p>&copy; 2025 Mi Página Web. Todos los derechos reservados.</p>
+  </footer>
+
+  <div class="sinopsis" style="display: none;">
+    <div class="trailer-container">
+      <video id="trailerVideo" width="700" controls>
+        <source src="videos/thelastofus.mp4" type="video/mp4">
+        Tu navegador no soporta el video.
+      </video>
+      <button class="close-btn" style="position: absolute; top: 10px; right: 10px; background: red; color: white; border: none; padding: 5px;">X</button>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
+
+<script src="resultados.js"></script>
+
+  <script src="script.js"></script>
+
+
+<div id="detalle-overlay" class="detalle-oculto">
+
+  <div class="detalle-contenido">
+    <span class="cerrar" onclick="cerrarDetalle()">✖</span>
+    <div class="detalle-flex">
+      <img id="detalle-img" src="" alt="">
+      <div class="detalle-info">
+        <h2 id="detalle-titulo"></h2>
+        <p id="detalle-sinopsis"></p>
+   <div class="detalle-botones">
+  <button class="btn-prime">▶ Ver Tráiler</button>
+  <button class="btn-prime"> Alquilar - S/ 5.99</button>
+  <button class="btn-prime"> Comprar - S/ 20.00</button>
+</div>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>

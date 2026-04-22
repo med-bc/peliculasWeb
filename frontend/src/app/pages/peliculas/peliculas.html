@@ -1,0 +1,23 @@
+<div class="peliculas-container">
+  <div class="page-header">
+    <h1>Películas</h1>
+    <div class="filter-section">
+      <select class="filter-select">
+        <option>Todos los géneros</option>
+        <option>Acción</option>
+        <option>Comedia</option>
+        <option>Drama</option>
+        <option>Terror</option>
+      </select>
+      <input type="text" placeholder="Buscar película..." class="filter-search">
+    </div>
+  </div>
+
+  <div class="grid-peliculas">
+    <div class="pelicula-card" *ngFor="let pelicula of peliculas">
+      <div class="pelicula-image"></div>
+      <h3>{{ pelicula.titulo }}</h3>
+      <button class="btn-detalles">Ver Detalles</button>
+    </div>
+  </div>
+</div>

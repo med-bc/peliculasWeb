@@ -1,0 +1,14 @@
+<div class="generos-container">
+  <div class="page-header">
+    <h1>{{ genero | titlecase }}</h1>
+    <p>Películas y series de {{ genero | lowercase }}</p>
+  </div>
+
+  <div class="grid-contenidos">
+    <div class="contenido-card" *ngFor="let contenido of contenidos">
+      <div class="contenido-image"></div>
+      <h3>{{ contenido.titulo }}</h3>
+      <button class="btn-detalles">Ver Detalles</button>
+    </div>
+  </div>
+</div>
