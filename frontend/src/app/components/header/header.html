@@ -1,0 +1,67 @@
+<header class="header">
+  <div class="header-left">
+    <div class="logo-container">
+      <h1 class="logo">CineScope</h1>
+    </div>
+    <nav class="menu">
+      <a href="/home" routerLink="/home">Inicio</a>
+      <a href="/peliculas" routerLink="/peliculas">Películas</a>
+      <a href="/series" routerLink="/series">Series</a>
+      <div class="dropdown">
+        <a href="#">Géneros</a>
+        <div class="dropdown-content">
+          <a href="/generos/accion" routerLink="/generos/accion">Acción</a>
+          <a href="/generos/comedia" routerLink="/generos/comedia">Comedia</a>
+          <a href="/generos/drama" routerLink="/generos/drama">Drama</a>
+          <a href="/generos/terror" routerLink="/generos/terror">Terror</a>
+          <a href="/generos/anime" routerLink="/generos/anime">Anime</a>
+          <a href="/generos/cienciaficcion" routerLink="/generos/cienciaficcion">Ciencia Ficción</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="header-center">
+    <div class="search-links">
+      <a href="/contactos" routerLink="/contactos" class="enlace-header">Contactos</a>
+      <a href="/nosotros" routerLink="/nosotros" class="enlace-header">Nosotros</a>
+    </div>
+  </div>
+
+  <div class="header-right">
+    <div class="search-container">
+      <input type="text" placeholder="Buscar..." class="search-input">
+      <button class="btn-registrarse" (click)="abrirRegistro()">Registrarse</button>
+      
+      <div *ngIf="!isLoggedIn">
+        <button class="btn-login" (click)="abrirLogin()">Iniciar sesión</button>
+      </div>
+      <div *ngIf="isLoggedIn" class="user-menu">
+        <span class="user-name">{{ userName }}</span>
+        <button class="btn-logout" (click)="cerrarSesion()">Cerrar sesión</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Login -->
+  <div class="modal" [style.display]="showLoginModal ? 'flex' : 'none'" (click)="cerrarLogin()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <span class="close" (click)="cerrarLogin()">&times;</span>
+      <p class="login-text">LOGIN</p>
+      <input type="text" placeholder="Usuario" class="modal-input">
+      <input type="password" placeholder="Contraseña" class="modal-input">
+      <button class="modal-btn" (click)="iniciarSesion()">Entrar</button>
+    </div>
+  </div>
+
+  <!-- Modal de Registro -->
+  <div class="modal" [style.display]="showRegisterModal ? 'flex' : 'none'" (click)="cerrarRegistro()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <span class="close" (click)="cerrarRegistro()">&times;</span>
+      <p class="registro-text">REGISTRO</p>
+      <input type="text" placeholder="Usuario" class="modal-input">
+      <input type="password" placeholder="Contraseña" class="modal-input">
+      <button class="modal-btn" (click)="registrarUsuario()">Registrarse</button>
+    </div>
+  </div>
+</header>

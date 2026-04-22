@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciencia Ficcion - CineScope</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <h1 class="logo">CineScope</h1>
+            <nav class="menu">
+                <a href="index.html">Inicio</a>
+                <a href="peliculas.html">Películas</a>
+                <a href="series.html">Series</a>
+                <div class="dropdown">
+                    <a href="#">Géneros</a>
+                    <div class="dropdown-content">
+                        <a href="accion.html">Acción</a>
+                        <a href="comedia.html">Comedia</a>
+                        <a href="drama.html">Drama</a>
+                        <a href="terror.html">Terror</a>
+                        <a href="anime.html">Anime</a>
+                        <a href="cienciaficcion.html">Ciencia Ficción</a>
+                        
+                    </div>
+                </div>
+            </nav>
+        </div>
+       
+    </header>
+
+
+<!-- BARRA DE BUSQUEDA -->
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="Buscar...">
+  <button id="searchBtn">Buscar</button>
+</div>
+<div id="result"></div>
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const searchBtn = document.getElementById('searchBtn');
+
+  searchBtn.addEventListener('click', () => {
+    const termino = searchInput.value.trim();
+    if (termino) {
+      window.location.href = `resultados.html?q=${encodeURIComponent(termino)}`;
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+    <section class="peliculas">
+        <h2>Ciencia Ficcion</h2>
+        <div class="peliculas-grid" id="peliculasGrid">
+            <div class="card"><img src="IMAGENES/king kong.png"><h3>KING KONG</h3></div>
+            <div class="card"><img src="IMAGENES/Hulk.png"><h3>HULK</h3></div>
+            <div class="card"><img src="IMAGENES/infinity wars.png"><h3>AVENGERS INFITY WAR</h3></div>
+            <div class="card"><img src="IMAGENES/venom.png"><h3>Venom</h3></div>
+            <div class="card"><img src="IMAGENES/the codes war.png"><h3>THE CODES WAR</h3></div>
+            <div class="card"><img src="IMAGENES/alien romulus.png"><h3>ALIEN ROMULUS</h3></div>
+            <div class="card hidden"><img src="IMAGENES/kraven el cazador.png"><h3>KRAVEN EL CAZADOR</h3></div>
+            <div class="card hidden"><img src="IMAGENES/harry pother.png"><h3>HARRY POTTER</h3></div>
+            <div class="card hidden"><img src="IMAGENES/sonic 3.png"><h3>SONIC 3</h3></div>
+        </div>
+      
+        <div style="text-align: center; margin-top: 20px;">
+            <button id="verMasBtn">Ver más</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 CineScope. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('verMasBtn');
+        const cards = document.querySelectorAll('.peliculas-grid .card.hidden');
+        let index = 0;
+      
+        btn.addEventListener('click', () => {
+            let mostrados = 0;
+            while (index < cards.length && mostrados < 4) {
+                cards[index].classList.remove('hidden');
+                index++;
+                mostrados++;
+            }
+            if (index >= cards.length) {
+                btn.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

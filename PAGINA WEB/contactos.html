@@ -1,0 +1,126 @@
+ <!-- PAGINA DE CONTACTOS -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contactos - CineScope</title>
+  <link rel="stylesheet" href="styles.css">
+  
+</head>
+<body>
+  <header>
+  
+    <div class="header-left">
+      <div style="display: flex; align-items: center;">
+        <img src="IMAGENES/logo.jpg" alt="Logo" style="height: 40px; margin-right: 10px;">
+      <h1 class="logo">CineScope</h1>
+      <nav class="menu">
+        <a href="index.html">Inicio</a>
+        <a href="peliculas.html">Películas</a>
+        <a href="Series.html">Series</a>
+        <div class="dropdown">
+          <a href="#">Géneros</a>
+            <div class="dropdown-content">
+                <a href="accion.html">Acción</a>
+                <a href="comedia.html">Comedia</a>
+                <a href="drama.html">Drama</a>
+                <a href="terror.html">Terror</a>
+                <a href="anime.html">Anime</a>
+                <a href="cienciaficcion.html">Ciencia Ficción</a>
+               
+            </div>
+        </div>
+      </nav>
+    </div>
+
+
+     <div class="header-center">
+    <div class="search-links">
+      <a href="contactos.html" class="enlace-header">Contactos</a>
+      <a href="nosotros.html" class="enlace-header">Nosotros</a>
+    </div>
+
+
+
+  </header>
+
+
+
+  
+  <!-- Formulario de opinión del usuario -->
+  <section class="formulario">
+    <h2 id="tituloFormulario">¡Cuéntanos qué te pareció la experiencia!</h2>
+    <form id="formulario" onsubmit="mostrarMensaje(event)">
+      <label>Nombre:</label>
+      <input type="text" name="nombre" required>
+
+      <label>Apellidos:</label>
+      <input type="text" name="apellidos" required>
+
+      <label>Correo Electrónico:</label>
+      <input type="email" name="correo" required>
+
+      <label>Género:</label>
+      <div class="radio-group">
+        <input type="radio" name="genero" value="Hombre" required> Hombre
+        <input type="radio" name="genero" value="Mujer"> Mujer
+      </div>
+
+      <label>Comentario:</label>
+      <textarea name="comentario" rows="4" placeholder="Escribe tu opinión aquí..."></textarea>
+
+      <div class="botones">
+        <button type="reset">Borrar</button>
+        <button type="submit">Enviar</button>
+      </div>
+    </form>
+
+    <!-- Mensaje de agradecimiento -->
+    <div id="mensajeGracias" style="display:none; text-align:center; font-size: 18px; margin-top: 20px;">
+      <p>¡Gracias por compartir tu experiencia!</p>
+    </div>
+  </section>
+
+  <script>
+    function mostrarMensaje(event) {
+      event.preventDefault(); 
+      document.getElementById('formulario').style.display = 'none';
+      document.getElementById('tituloFormulario').style.display = 'none';
+      document.getElementById('mensajeGracias').style.display = 'block';
+    }
+  </script>
+
+  <hr class="separador">
+
+  <!-- Tabla de información -->
+  <section class="tabla-informacion">
+    <h2>Información de la Página</h2>
+    <table>
+      <tbody>
+        <tr>
+          <td>Número de Contacto</td>
+          <td>‪+51 987 654 321‬</td>
+        </tr>
+        <tr>
+          <td>Correo de Contacto</td>
+          <td>contacto@cinescope.com</td>
+        </tr>
+        <tr>
+          <td>Nosotros</td>
+          <td><a href="nosotros.html">Conoce más sobre nosotros</a></td>
+        </tr>
+        <tr>
+          <td>Preguntas Frecuentes</td>
+          <td><a href="faq.html">Ver Preguntas Frecuentes</a></td>
+        </tr>
+        <tr>
+          <td>Términos y Condiciones</td>
+          <td><a href="terminos.html">Leer Términos y Condiciones</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</body>
+</html>
+

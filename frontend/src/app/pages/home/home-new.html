@@ -1,0 +1,49 @@
+<div class="home-container">
+  <!-- Banner principal -->
+  <section class="banner">
+    <div class="banner-info">
+      <h2>Serie Destacada</h2>
+      <p>Ellie y Abby se enfrentan por venganza en un mundo roto.</p>
+      <div class="banner-buttons">
+        <button class="btn-trailer">▶ Ver Tráiler</button>
+        <button class="btn-info">+ Información</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Películas de Estreno -->
+  <section class="peliculas-section">
+    <div class="section-header">
+      <h2>Últimos Estrenos</h2>
+    </div>
+    <div class="grid-container">
+      <div class="slide" *ngFor="let pelicula of estrenos">
+        <div class="slide-item">
+          <div class="slide-placeholder"></div>
+          <h3 class="slide-title">{{ pelicula.titulo }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="section-buttons">
+      <button class="btn-ver-todo">Ver todo</button>
+    </div>
+  </section>
+
+  <!-- Películas y Series Recomendadas -->
+  <section class="peliculas-section">
+    <div class="section-header">
+      <h2>Películas y Series Recomendadas</h2>
+    </div>
+    <div class="grid-container">
+      <div class="slide" *ngFor="let recomendada of recomendadas">
+        <div class="slide-item">
+          <div class="slide-placeholder"></div>
+          <h3 class="slide-title">{{ recomendada.titulo }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="section-buttons">
+      <button class="btn-ver-todo">Ver todo</button>
+    </div>
+  </section>
+</div>

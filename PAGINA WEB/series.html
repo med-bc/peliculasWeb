@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Series - CineScope</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <h1 class="logo">CineScope</h1>
+      <nav class="menu">
+        <a href="index.html">Inicio</a>
+        <a href="peliculas.html">Películas</a>
+        <a href="series.html">Series</a>
+        <div class="dropdown">
+            <a href="#">Géneros</a>
+            <div class="dropdown-content">
+                <a href="accion.html">Acción</a>
+                <a href="comedia.html">Comedia</a>
+                <a href="drama.html">Drama</a>
+                <a href="terror.html">Terror</a>
+                <a href="anime.html">Anime</a>
+                <a href="cienciaficcion.html">Ciencia Ficción</a>
+                
+            </div>
+        </div>
+      </nav>
+    </div>
+    
+  </header>
+
+
+<!-- BARRA DE BUSQUEDA -->
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="Buscar...">
+  <button id="searchBtn">Buscar</button>
+</div>
+<div id="result"></div>
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const searchBtn = document.getElementById('searchBtn');
+
+  searchBtn.addEventListener('click', () => {
+    const termino = searchInput.value.trim();
+    if (termino) {
+      window.location.href = `resultados.html?q=${encodeURIComponent(termino)}`;
+    }
+  });
+</script>
+
+
+
+
+  <!-- Sección de series -->
+  <section class="peliculas">
+    <h2>Series</h2>
+    <div class="peliculas-grid" id="seriesGrid">
+     <!-- Las primeras 6 visibles -->
+     <div class="card"><img src="IMAGENES/Al fondo hay sitio.png"><h3>Al fondo hay sitio</h3></div>
+     <div class="card"><img src="IMAGENES/Mr Robot.png"><h3>Mr Robot</h3></div>
+     <div class="card"><img src="IMAGENES/Breaking bad.png"><h3>Breaking Bad</h3></div>
+     <div class="card"><img src="IMAGENES/Ben 10.png"><h3>ben 10</h3></div>
+     <div class="card"><img src="IMAGENES/Alice  in bonderland.png"><h3>Alice in Bonderland</h3></div>
+     <div class="card"><img src="IMAGENES/the boys.png"><h3>the boys</h3></div>
+     <div class="card"><img src="IMAGENES/the last of us.png"><h3>the last of us</h3></div>
+     <div class="card"><img src="IMAGENES/The Walking dead.png"><h3>The walking dead</h3></div>
+     <div class="card"><img src="IMAGENES/dark.png"><h3>DArk</h3></div>
+     <div class="card"><img src="IMAGENES/Gravity falls.png"><h3>Gravity falls</h3></div>
+ 
+     <!-- Las siguientes ocultas inicialmente -->
+     <div class="card hidden"><img src="IMAGENES/juego de tronos.png"><h3>Juego de tronos</h3></div>
+     <div class="card hidden"><img src="IMAGENES/Bojack Horse man.png"><h3>Bojack HorseMan</h3></div>
+     <div class="card hidden"><img src="IMAGENES/Pablo escobar.png"><h3>pablo escobar</h3></div>
+     <div class="card hidden"><img src="IMAGENES/Squid game.png"><h3>squid game</h3></div>
+     <div class="card hidden"><img src="IMAGENES/LOKI.png"><h3>loki</h3></div>
+     <div class="card hidden"><img src="IMAGENES/Dexter.png"><h3>dexter</h3></div>
+     <div class="card hidden"><img src="IMAGENES/El chavo del 8.png"><h3>El chavo del 8</h3></div>
+     <div class="card hidden"><img src="IMAGENES/Wanda y VIsion.png"><h3>Wanda y Vision</h3></div>
+     <div class="card hidden"><img src="IMAGENES/the wire.png"><h3>The wire</h3></div>
+     <div class="card hidden"><img src="IMAGENES/Los sopranos.png"><h3>Los sopranos</h3></div>
+   </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+      <button id="verMasSeriesBtn">Ver más</button>
+    </div>
+  </section>
+
+  <!-- Script -->
+  <script>
+    const btnSeries = document.getElementById('verMasSeriesBtn');
+    const seriesOcultas = document.querySelectorAll('#seriesGrid .card.hidden');
+    let indexSerie = 0;
+
+    btnSeries.addEventListener('click', () => {
+      let mostradas = 0;
+      while (indexSerie < seriesOcultas.length && mostradas < 4) {
+        seriesOcultas[indexSerie].classList.remove('hidden');
+        indexSerie++;
+        mostradas++;
+      }
+      if (indexSerie >= seriesOcultas.length) {
+        btnSeries.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
