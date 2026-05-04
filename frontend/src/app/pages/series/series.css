@@ -50,83 +50,20 @@
   font-size: 1em;
   text-align: center;
   background-color: #1a1a1a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .serie-card:hover h3 {
   color: #e50914;
 }
 
-.btn-detalles {
-  width: 100%;
-  padding: 10px;
-  background-color: #e50914;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s;
-}
-
-.btn-detalles:hover {
-  background-color: #ff3333;
-}
-
-.detalle {
-  margin-top: 40px;
-  background: #1a1a1a;
-  border: 1px solid #333;
-  border-radius: 12px;
-  padding: 24px;
-}
-
-.detalle h2,
-.detalle h3,
-.detalle h4,
-.detalle p,
-.detalle span,
-.detalle label {
-  color: #fff;
-}
-
-.acciones {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin: 16px 0;
-}
-
-.acciones button,
-.nueva-resena button {
-  background: #e50914;
-  color: #fff;
-  border: none;
-  padding: 10px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.nueva-resena input,
-.nueva-resena textarea,
-.acciones select {
-  width: 100%;
-  margin: 8px 0;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #444;
-  background: #111;
-  color: #fff;
-}
-
-.resena-item {
-  border-top: 1px solid #333;
-  padding-top: 12px;
-  margin-top: 12px;
-}
-
-.meta {
-  color: #bbb;
-  font-size: 0.9rem;
+.sin-resultados {
+  text-align: center;
+  color: #666;
+  font-size: 1.2rem;
+  padding: 40px;
 }
 
 @media (max-width: 768px) {

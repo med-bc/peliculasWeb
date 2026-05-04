@@ -14,6 +14,7 @@ import { AuthService } from '../../services/auth';
 export class HeaderComponent {
   showLoginModal = false;
   showRegisterModal = false;
+  showUserMenu = false;
   isLoggedIn = false;
   userName = '';
 
@@ -40,6 +41,10 @@ export class HeaderComponent {
     const token = this.authService.obtenerToken();
     this.isLoggedIn = !!token;
     this.userName = localStorage.getItem('nombreUsuario') || '';
+  }
+
+  toggleUserMenu() {
+    this.showUserMenu = !this.showUserMenu;
   }
 
   abrirLogin() {

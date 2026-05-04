@@ -1,0 +1,93 @@
+<div class="detalle-container" *ngIf="!cargando">
+  <!-- Hero con imagen de fondo -->
+  <div class="hero" [style.backgroundImage]="'linear-gradient(to bottom, rgba(0,0,0,0.3), #000), url(' + imagenUrl + ')'" *ngIf="imagenUrl">
+    <div class="hero-content">
+      <img [src]="imagenUrl" [alt]="titulo" class="poster">
+      <div class="hero-info">
+        <h1>{{ titulo }}</h1>
+        <div class="meta">
+          <span>{{ genero }}</span>
+          <span class="separador">|</span>
+          <span>{{ anio }}</span>
+          <span class="separador" *ngIf="serie">|</span>
+          <span *ngIf="serie">{{ serie.temporadas }} temporadas</span>
+        </div>
+        
+        <div class="rating-box" *ngIf="resumen">
+          <div class="rating-value">{{ resumen.promedio | number:'1.1-1' }}</div>
+          <div class="rating-label">{{ resumen.total }} reseñas</div>
+        </div>
+
+        <p class="descripcion">{{ descripcion }}</p>
+
+        <div class="acciones">
+          <button class="btn-favorito" [class.active]="esFavorito" (click)="toggleFavorito()">
+            <span class="heart-icon">{{ esFavorito ? '❤️' : '🤍' }}</span>
+            {{ esFavorito ? 'En favoritos' : 'Agregar a favoritos' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sin imagen -->
+  <div class="hero hero-no-image" *ngIf="!imagenUrl">
+    <div class="hero-content-only">
+      <h1>{{ titulo }}</h1>
+      <div class="meta">
+        <span>{{ genero }}</span>
+        <span class="separador">|</span>
+        <span>{{ anio }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección de calificación -->
+  <section class="calificacion-section">
+    <h2>Califica esta {{ tipo }}</h2>
+    <div class="stars-container">
+      <button class="star" 
+        *ngFor="let n of [1,2,3,4,5]" 
+        [class.active]="n <= miPuntuacion"
+        (click)="miPuntuacion = n">
+        {{ n <= miPuntuacion ? '⭐' : '☆' }}
+      </button>
+      <span class="puntuacion-texto">{{ miPuntuacion }}/5</span>
+    </div>
+    <button class="btn-calificar" (click)="enviarCalificacion()">Enviar calificación</button>
+  </section>
+
+  <!-- Sección de reseñas -->
+  <section class="resenas-section">
+    <h2>Reseñas</h2>
+    
+    <!-- Formulario nueva reseña -->
+    <div class="nueva-resena">
+      <h3>Escribe una reseña</h3>
+      <input [(ngModel)]="tituloResena" placeholder="Título de tu reseña" class="input-titulo">
+      <textarea [(ngModel)]="comentarioResena" placeholder="¿Qué te pareció? Cuéntanos tu opinión..."></textarea>
+      <button class="btn-publicar" (click)="enviarResena()">Publicar reseña</button>
+    </div>
+
+    <!-- Lista de reseñas -->
+    <div class="resenas-lista">
+      <div class="resena-card" *ngFor="let resena of resenas">
+        <div class="resena-header">
+          <span class="usuario">{{ resena.nombreUsuario }}</span>
+          <span class="fecha">{{ resena.fechaCreacion | date:'dd/MM/yyyy' }}</span>
+        </div>
+        <h4 class="resena-titulo">{{ resena.titulo }}</h4>
+        <p class="resena-comentario">{{ resena.comentario }}</p>
+      </div>
+      
+      <p class="sin-resenas" *ngIf="resenas.length === 0">
+        No hay reseñas aún. ¡Sé el primero en opinar!
+      </p>
+    </div>
+  </section>
+</div>
+
+<div class="cargando" *ngIf="cargando">
+  <div class="spinner"></div>
+  <p>Cargando...</p>
+</div>

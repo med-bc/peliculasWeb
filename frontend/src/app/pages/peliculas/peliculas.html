@@ -4,44 +4,11 @@
   </div>
 
   <div class="grid-peliculas">
-    <div class="pelicula-card" *ngFor="let pelicula of peliculas">
+    <div class="pelicula-card" *ngFor="let pelicula of peliculas" [routerLink]="['/detalle', 'pelicula', pelicula.id]">
       <img class="pelicula-image" [src]="pelicula.imagenUrl" [alt]="pelicula.titulo"/>
       <h3>{{ pelicula.titulo }}</h3>
-      <button class="btn-detalles" (click)="abrirDetalle(pelicula)">Ver detalles y reseñas</button>
     </div>
   </div>
 
-  <section class="detalle" *ngIf="seleccionada">
-    <h2>{{ seleccionada.titulo }}</h2>
-    <p>{{ seleccionada.descripcion }}</p>
-    <p><strong>Género:</strong> {{ seleccionada.genero }} | <strong>Año:</strong> {{ seleccionada.anio }}</p>
-
-    <div class="acciones" *ngIf="resumen">
-      <span>Promedio: {{ resumen.promedio | number:'1.1-1' }} ({{ resumen.total }} votos)</span>
-      <label>Tu calificación:
-        <select [(ngModel)]="miPuntuacion">
-          <option *ngFor="let n of [1,2,3,4,5]" [ngValue]="n">{{ n }}</option>
-        </select>
-      </label>
-      <button (click)="enviarCalificacion()">Calificar</button>
-      <button (click)="toggleFavorito()">{{ esFavorito ? 'Quitar de favoritos' : 'Agregar a favoritos' }}</button>
-    </div>
-
-    <div class="nueva-resena">
-      <h3>Publicar reseña</h3>
-      <input [(ngModel)]="tituloResena" placeholder="Título de tu reseña" />
-      <textarea [(ngModel)]="comentarioResena" placeholder="¿Qué te pareció la película?"></textarea>
-      <button (click)="enviarResena()">Publicar</button>
-    </div>
-
-    <div class="resenas">
-      <h3>Reseñas públicas</h3>
-      <article *ngFor="let resena of resenas" class="resena-item">
-        <h4>{{ resena.titulo }}</h4>
-        <p class="meta">{{ resena.nombreUsuario }} - {{ resena.fechaCreacion | date:'short' }}</p>
-        <p>{{ resena.comentario }}</p>
-      </article>
-      <p *ngIf="resenas.length === 0">Aún no hay reseñas para esta película.</p>
-    </div>
-  </section>
+  <p *ngIf="peliculas.length === 0" class="sin-resultados">No hay películas disponibles.</p>
 </div>

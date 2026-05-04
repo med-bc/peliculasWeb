@@ -10,8 +10,12 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(data: any) {
+login(data: any) {
     return this.http.post<any>(`${this.API}/login`, data);
+  }
+
+  register(usuario: any) {
+    return this.http.post<any>(`${this.API}`, usuario);
   }
 
   guardarToken(token: string) {
