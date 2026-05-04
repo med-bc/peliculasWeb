@@ -19,11 +19,45 @@
     </nav>
   </div>
 
-<div class="header-right">
-    <!-- Buscador -->
-    <div class="search-box">
-      <input type="text" placeholder="Buscar películas..." class="search-input">
-      <button class="search-btn">🔍</button>
+  <div class="header-right">
+    <!-- Buscador con sugerencias -->
+    <div class="search-container">
+      <div class="search-box">
+        <input 
+          type="text" 
+          placeholder="Buscar películas..." 
+          class="search-input"
+          [(ngModel)]="terminoBusqueda"
+          (input)="buscar()"
+          (focus)="buscar()"
+          (blur)="ocultarSugerencias()"
+        >
+        <button class="search-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="M21 21l-4.35-4.35"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Sugerencias -->
+      <div class="sugerencias" *ngIf="showSugerencias && resultados.length > 0">
+        <div 
+          class="sugerencia-item" 
+          *ngFor="let resultado of resultados"
+          (click)="irADetalle(resultado)"
+        >
+          <span class="sugerencia-icon">{{ resultado.tipo === 'pelicula' ? '🎬' : '📺' }}</span>
+          <span class="sugerencia-text">{{ resultado.titulo }}</span>
+          <span class="sugerencia-type">{{ resultado.tipo === 'pelicula' ? 'Película' : 'Serie' }}</span>
+        </div>
+      </div>
+      
+      <div class="sugerencias" *ngIf="showSugerencias && terminoBusqueda.trim() && resultados.length === 0">
+        <div class="sugerencia-item sin-resultados">
+          No se encontraron resultados
+        </div>
+      </div>
     </div>
 
     <!-- Cuando NO está logueado -->
@@ -35,122 +69,99 @@
     <!-- Cuando SÍ está logueado -->
     <div class="user-menu-container" *ngIf="isLoggedIn">
       <button class="user-button" (click)="toggleUserMenu()">
-        <span class="user-avatar">👤</span>
         <span class="user-name">{{ userName }}</span>
         <span class="dropdown-arrow">▾</span>
       </button>
       <div class="user-dropdown" [class.show]="showUserMenu">
-        <a routerLink="/perfil" (click)="showUserMenu = false">
-          <span>👤</span> Mi Perfil
-        </a>
-        <a (click)="cerrarSesion(); showUserMenu = false">
-          <span>🚪</span> Cerrar Sesión
-        </a>
+        <a routerLink="/perfil" (click)="showUserMenu = false">Mi Perfil</a>
+        <a (click)="cerrarSesion(); showUserMenu = false">Cerrar Sesión</a>
       </div>
-    </div>
-  </div>
-
-    <!-- Cuando SÍ está logueado -->
-    <div class="user-menu-container" *ngIf="isLoggedIn">
-      <button class="user-button" (click)="toggleUserMenu()">
-        <span class="user-avatar">👤</span>
-        <span class="user-name">{{ userName }}</span>
-        <span class="dropdown-arrow">▾</span>
-      </button>
-      <div class="user-dropdown" [class.show]="showUserMenu">
-        <a routerLink="/perfil" (click)="showUserMenu = false">
-          <span></span> Mi Perfil
-        </a>
-        <a (click)="cerrarSesion(); showUserMenu = false">
-          <span></span> Cerrar Sesión
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal de Login -->
-  <div class="modal-overlay" [class.show]="showLoginModal" (click)="cerrarLogin()">
-    <div class="modal-content" (click)="$event.stopPropagation()">
-      <button class="modal-close" (click)="cerrarLogin()">&times;</button>
-      
-      <div class="modal-header">
-        <h2>Bienvenido</h2>
-        <p>Inicia sesión para continuar</p>
-      </div>
-
-      <form class="modal-form" (ngSubmit)="iniciarSesion()">
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" [(ngModel)]="loginEmail" name="loginEmail" placeholder="tu@email.com" required>
-        </div>
-
-        <div class="form-group">
-          <label>Contraseña</label>
-          <input type="password" [(ngModel)]="loginContrasena" name="loginContrasena" placeholder="••••••••" required>
-        </div>
-
-        <p class="error-msg" *ngIf="loginError">{{ loginError }}</p>
-
-        <button type="submit" class="btn-submit">Iniciar Sesión</button>
-      </form>
-
-      <p class="modal-footer-text">
-        ¿No tienes cuenta? <a (click)="cerrarLogin(); abrirRegistro()">Regístrate aquí</a>
-      </p>
-    </div>
-  </div>
-
-  <!-- Modal de Registro -->
-  <div class="modal-overlay" [class.show]="showRegisterModal" (click)="cerrarRegistro()">
-    <div class="modal-content modal-content-register" (click)="$event.stopPropagation()">
-      <button class="modal-close" (click)="cerrarRegistro()">&times;</button>
-      
-      <div class="modal-header">
-        <h2>Crear Cuenta</h2>
-        <p>Únete a la comunidad CineScope</p>
-      </div>
-
-      <form class="modal-form" (ngSubmit)="registrarUsuario()">
-        <div class="form-row">
-          <div class="form-group">
-            <label>Nombres *</label>
-            <input type="text" [(ngModel)]="regNombres" name="regNombres" placeholder="Tu nombre" required>
-          </div>
-          <div class="form-group">
-            <label>Apellidos *</label>
-            <input type="text" [(ngModel)]="regApellidos" name="regApellidos" placeholder="Tu apellido" required>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Nombre de usuario *</label>
-          <input type="text" [(ngModel)]="regNombreUsuario" name="regNombreUsuario" placeholder="Tu nombre de usuario" required>
-        </div>
-
-        <div class="form-group">
-          <label>Email *</label>
-          <input type="email" [(ngModel)]="regEmail" name="regEmail" placeholder="tu@email.com" required>
-        </div>
-
-        <div class="form-group">
-          <label>Celular</label>
-          <input type="tel" [(ngModel)]="regCelular" name="regCelular" placeholder="+51 999 999 999">
-        </div>
-
-        <div class="form-group">
-          <label>Contraseña *</label>
-          <input type="password" [(ngModel)]="regContrasena" name="regContrasena" placeholder="••••••••" required>
-        </div>
-
-        <p class="error-msg" *ngIf="regError">{{ regError }}</p>
-        <p class="success-msg" *ngIf="regSuccess">{{ regSuccess }}</p>
-
-        <button type="submit" class="btn-submit">Crear Cuenta</button>
-      </form>
-
-      <p class="modal-footer-text">
-        ¿Ya tienes cuenta? <a (click)="cerrarRegistro(); abrirLogin()">Inicia sesión aquí</a>
-      </p>
     </div>
   </div>
 </header>
+
+<!-- Modal de Login -->
+<div class="modal-overlay" [class.show]="showLoginModal" (click)="cerrarLogin()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button class="modal-close" (click)="cerrarLogin()">&times;</button>
+    
+    <div class="modal-header">
+      <h2>Bienvenido</h2>
+      <p>Inicia sesión para continuar</p>
+    </div>
+
+    <form class="modal-form" (ngSubmit)="iniciarSesion()">
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" [(ngModel)]="loginEmail" name="loginEmail" placeholder="tu@email.com" required>
+      </div>
+
+      <div class="form-group">
+        <label>Contraseña</label>
+        <input type="password" [(ngModel)]="loginContrasena" name="loginContrasena" placeholder="••••••••" required>
+      </div>
+
+      <p class="error-msg" *ngIf="loginError">{{ loginError }}</p>
+
+      <button type="submit" class="btn-submit">Iniciar Sesión</button>
+    </form>
+
+    <p class="modal-footer-text">
+      ¿No tienes cuenta? <a (click)="cerrarLogin(); abrirRegistro()">Regístrate aquí</a>
+    </p>
+  </div>
+</div>
+
+<!-- Modal de Registro -->
+<div class="modal-overlay" [class.show]="showRegisterModal" (click)="cerrarRegistro()">
+  <div class="modal-content modal-content-register" (click)="$event.stopPropagation()">
+    <button class="modal-close" (click)="cerrarRegistro()">&times;</button>
+    
+    <div class="modal-header">
+      <h2>Crear Cuenta</h2>
+      <p>Únete a la comunidad CineScope</p>
+    </div>
+
+    <form class="modal-form" (ngSubmit)="registrarUsuario()">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombres *</label>
+          <input type="text" [(ngModel)]="regNombres" name="regNombres" placeholder="Tu nombre" required>
+        </div>
+        <div class="form-group">
+          <label>Apellidos *</label>
+          <input type="text" [(ngModel)]="regApellidos" name="regApellidos" placeholder="Tu apellido" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Nombre de usuario *</label>
+        <input type="text" [(ngModel)]="regNombreUsuario" name="regNombreUsuario" placeholder="Tu nombre de usuario" required>
+      </div>
+
+      <div class="form-group">
+        <label>Email *</label>
+        <input type="email" [(ngModel)]="regEmail" name="regEmail" placeholder="tu@email.com" required>
+      </div>
+
+      <div class="form-group">
+        <label>Celular</label>
+        <input type="tel" [(ngModel)]="regCelular" name="regCelular" placeholder="+51 999 999 999">
+      </div>
+
+      <div class="form-group">
+        <label>Contraseña *</label>
+        <input type="password" [(ngModel)]="regContrasena" name="regContrasena" placeholder="••••••••" required>
+      </div>
+
+      <p class="error-msg" *ngIf="regError">{{ regError }}</p>
+      <p class="success-msg" *ngIf="regSuccess">{{ regSuccess }}</p>
+
+      <button type="submit" class="btn-submit">Crear Cuenta</button>
+    </form>
+
+    <p class="modal-footer-text">
+      ¿Ya tienes cuenta? <a (click)="cerrarRegistro(); abrirLogin()">Inicia sesión aquí</a>
+    </p>
+  </div>
+</div>

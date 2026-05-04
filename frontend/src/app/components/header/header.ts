@@ -1,8 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth';
+import { CatalogoService, Pelicula, Serie } from '../../services/catalogo';
+
+interface ResultadoBusqueda {
+  id: number;
+  titulo: string;
+  tipo: 'pelicula' | 'serie';
+}
 
 @Component({
   selector: 'app-header',
@@ -11,12 +18,19 @@ import { AuthService } from '../../services/auth';
   templateUrl: './header.html',
   styleUrl: './header.css'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   showLoginModal = false;
   showRegisterModal = false;
   showUserMenu = false;
   isLoggedIn = false;
   userName = '';
+
+  // Buscador
+  terminoBusqueda = '';
+  resultados: ResultadoBusqueda[] = [];
+  showSugerencias = false;
+  peliculas: Pelicula[] = [];
+  series: Serie[] = [];
 
   // Login fields
   loginEmail = '';
@@ -33,14 +47,68 @@ export class HeaderComponent {
   regError = '';
   regSuccess = '';
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(
+    private authService: AuthService, 
+    private router: Router,
+    private catalogoService: CatalogoService
+  ) {
     this.checkLoginStatus();
+  }
+
+  ngOnInit() {
+    this.catalogoService.listarPeliculas().subscribe({
+      next: (data) => (this.peliculas = data),
+      error: () => {}
+    });
+
+    this.catalogoService.listarSeries().subscribe({
+      next: (data) => (this.series = data),
+      error: () => {}
+    });
   }
 
   checkLoginStatus() {
     const token = this.authService.obtenerToken();
     this.isLoggedIn = !!token;
     this.userName = localStorage.getItem('nombreUsuario') || '';
+  }
+
+  buscar() {
+    if (!this.terminoBusqueda.trim()) {
+      this.resultados = [];
+      this.showSugerencias = false;
+      return;
+    }
+
+    const termino = this.terminoBusqueda.toLowerCase();
+    
+    const peliculasEncontradas = this.peliculas
+      .filter(p => p.titulo.toLowerCase().includes(termino))
+      .map(p => ({ id: p.id, titulo: p.titulo, tipo: 'pelicula' as const }));
+
+    const seriesEncontradas = this.series
+      .filter(s => s.titulo.toLowerCase().includes(termino))
+      .map(s => ({ id: s.id, titulo: s.titulo, tipo: 'serie' as const }));
+
+    this.resultados = [...peliculasEncontradas, ...seriesEncontradas].slice(0, 8);
+    this.showSugerencias = true;
+  }
+
+  irADetalle(resultado: ResultadoBusqueda) {
+    this.router.navigate(['/detalle', resultado.tipo, resultado.id]);
+    this.cerrarBusqueda();
+  }
+
+  ocultarSugerencias() {
+    setTimeout(() => {
+      this.showSugerencias = false;
+    }, 200);
+  }
+
+  cerrarBusqueda() {
+    this.showSugerencias = false;
+    this.terminoBusqueda = '';
+    this.resultados = [];
   }
 
   toggleUserMenu() {
