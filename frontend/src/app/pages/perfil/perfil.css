@@ -1,0 +1,25 @@
+.perfil {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 20px;
+  color: #fff;
+}
+
+.bloque {
+  margin-top: 24px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.resena-item {
+  border-top: 1px solid #333;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.meta {
+  color: #bbb;
+  font-size: 0.9rem;
+}

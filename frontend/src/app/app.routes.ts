@@ -6,6 +6,7 @@ import { SeriesComponent } from './pages/series/series';
 import { GenerosComponent } from './pages/generos/generos';
 import { ContactosComponent } from './pages/contactos/contactos';
 import { NosotrosComponent } from './pages/nosotros/nosotros';
+import { PerfilComponent } from './pages/perfil/perfil';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,5 +16,6 @@ export const routes: Routes = [
   { path: 'generos/:genero', component: GenerosComponent },
   { path: 'contactos', component: ContactosComponent },
   { path: 'nosotros', component: NosotrosComponent },
+  { path: 'perfil', component: PerfilComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];

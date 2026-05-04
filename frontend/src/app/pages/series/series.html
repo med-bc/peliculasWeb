@@ -1,23 +1,47 @@
 <div class="series-container">
   <div class="page-header">
     <h1>Series</h1>
-    <div class="filter-section">
-      <select class="filter-select">
-        <option>Todos los géneros</option>
-        <option>Acción</option>
-        <option>Comedia</option>
-        <option>Drama</option>
-        <option>Terror</option>
-      </select>
-      <input type="text" placeholder="Buscar serie..." class="filter-search">
-    </div>
   </div>
 
   <div class="grid-series">
     <div class="serie-card" *ngFor="let series of series">
-      <div class="serie-image"></div>
+      <img class="serie-image" [src]="series.imagenUrl" [alt]="series.titulo"/>
       <h3>{{ series.titulo }}</h3>
-      <button class="btn-detalles">Ver Detalles</button>
+      <button class="btn-detalles" (click)="abrirDetalle(series)">Ver detalles y reseñas</button>
     </div>
   </div>
+
+  <section class="detalle" *ngIf="seleccionada">
+    <h2>{{ seleccionada.titulo }}</h2>
+    <p>{{ seleccionada.descripcion }}</p>
+    <p><strong>Género:</strong> {{ seleccionada.genero }} | <strong>Año:</strong> {{ seleccionada.anio }} | <strong>Temporadas:</strong> {{ seleccionada.temporadas }}</p>
+
+    <div class="acciones" *ngIf="resumen">
+      <span>Promedio: {{ resumen.promedio | number:'1.1-1' }} ({{ resumen.total }} votos)</span>
+      <label>Tu calificación:
+        <select [(ngModel)]="miPuntuacion">
+          <option *ngFor="let n of [1,2,3,4,5]" [ngValue]="n">{{ n }}</option>
+        </select>
+      </label>
+      <button (click)="enviarCalificacion()">Calificar</button>
+      <button (click)="toggleFavorito()">{{ esFavorito ? 'Quitar de favoritos' : 'Agregar a favoritos' }}</button>
+    </div>
+
+    <div class="nueva-resena">
+      <h3>Publicar reseña</h3>
+      <input [(ngModel)]="tituloResena" placeholder="Título de tu reseña" />
+      <textarea [(ngModel)]="comentarioResena" placeholder="¿Qué te pareció la serie?"></textarea>
+      <button (click)="enviarResena()">Publicar</button>
+    </div>
+
+    <div class="resenas">
+      <h3>Reseñas públicas</h3>
+      <article *ngFor="let resena of resenas" class="resena-item">
+        <h4>{{ resena.titulo }}</h4>
+        <p class="meta">{{ resena.nombreUsuario }} - {{ resena.fechaCreacion | date:'short' }}</p>
+        <p>{{ resena.comentario }}</p>
+      </article>
+      <p *ngIf="resenas.length === 0">Aún no hay reseñas para esta serie.</p>
+    </div>
+  </section>
 </div>

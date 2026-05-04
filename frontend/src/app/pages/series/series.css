@@ -16,35 +16,6 @@
   padding-bottom: 15px;
 }
 
-.filter-section {
-  display: flex;
-  gap: 15px;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
-
-.filter-select,
-.filter-search {
-  padding: 10px 15px;
-  border-radius: 5px;
-  border: 1px solid #e50914;
-  background-color: #222;
-  color: #fff;
-  font-size: 1em;
-}
-
-.filter-select:focus,
-.filter-search:focus {
-  outline: none;
-  border-color: #ff3333;
-  box-shadow: 0 0 10px rgba(229, 9, 20, 0.3);
-}
-
-.filter-search {
-  flex: 1;
-  min-width: 200px;
-}
-
 .grid-series {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -69,11 +40,7 @@
 .serie-image {
   width: 100%;
   aspect-ratio: 2/3;
-  background: linear-gradient(135deg, #333 0%, #222 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #666;
+  object-fit: cover;
 }
 
 .serie-card h3 {
@@ -102,6 +69,64 @@
 
 .btn-detalles:hover {
   background-color: #ff3333;
+}
+
+.detalle {
+  margin-top: 40px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.detalle h2,
+.detalle h3,
+.detalle h4,
+.detalle p,
+.detalle span,
+.detalle label {
+  color: #fff;
+}
+
+.acciones {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 16px 0;
+}
+
+.acciones button,
+.nueva-resena button {
+  background: #e50914;
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.nueva-resena input,
+.nueva-resena textarea,
+.acciones select {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #111;
+  color: #fff;
+}
+
+.resena-item {
+  border-top: 1px solid #333;
+  padding-top: 12px;
+  margin-top: 12px;
+}
+
+.meta {
+  color: #bbb;
+  font-size: 0.9rem;
 }
 
 @media (max-width: 768px) {

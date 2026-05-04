@@ -133,9 +133,18 @@
   box-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
 }
 
-.slide-placeholder {
+.slide-placeholder,
+.slide-image {
   width: 100%;
   aspect-ratio: 2/3;
+  object-fit: cover;
+}
+
+.slide-image {
+  display: block;
+}
+
+.slide-placeholder {
   background: linear-gradient(135deg, #333 0%, #222 100%);
   display: flex;
   align-items: center;

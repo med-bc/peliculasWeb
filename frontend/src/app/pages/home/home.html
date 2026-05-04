@@ -17,9 +17,10 @@
       <h2>Últimos Estrenos</h2>
     </div>
     <div class="grid-container">
-      <div class="slide" *ngFor="let pelicula of estrenos">
+      <div class="slide" *ngFor="let pelicula of peliculas">
         <div class="slide-item">
-          <div class="slide-placeholder"></div>
+          <img *ngIf="pelicula.imagenUrl" [src]="pelicula.imagenUrl" [alt]="pelicula.titulo" class="slide-image">
+          <div *ngIf="!pelicula.imagenUrl" class="slide-placeholder"></div>
           <h3 class="slide-title">{{ pelicula.titulo }}</h3>
         </div>
       </div>
@@ -35,10 +36,11 @@
       <h2>Películas y Series Recomendadas</h2>
     </div>
     <div class="grid-container">
-      <div class="slide" *ngFor="let recomendada of recomendadas">
+      <div class="slide" *ngFor="let serie of series">
         <div class="slide-item">
-          <div class="slide-placeholder"></div>
-          <h3 class="slide-title">{{ recomendada.titulo }}</h3>
+          <img *ngIf="serie.imagenUrl" [src]="serie.imagenUrl" [alt]="serie.titulo" class="slide-image">
+          <div *ngIf="!serie.imagenUrl" class="slide-placeholder"></div>
+          <h3 class="slide-title">{{ serie.titulo }}</h3>
         </div>
       </div>
     </div>
