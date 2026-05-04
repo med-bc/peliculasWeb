@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes - CineScope</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header con el menú de navegación -->
+    <header>
+        <div class="header-left">
+            <h1 class="logo">CineScope</h1>
+            <nav class="menu">
+                <a href="index.html">Inicio</a>
+                <a href="peliculas.html">Películas</a>
+                <a href="series.html">Series</a>
+                <div class="dropdown">
+                    <a href="#">Géneros</a>
+                    <div class="dropdown-content">
+                        <a href="accion.html">Acción</a>
+                        <a href="comedia.html">Comedia</a>
+                        <a href="drama.html">Drama</a>
+                        <a href="terror.html">Terror</a>
+                        <a href="anime.html">Anime</a>
+                        <a href="cienciaficcion.html">Ciencia Ficción</a>
+                        <a href="romance.html">Romance</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+       
+    </header>
+
+
+
+
+<!-- BARRA DE BUSQUEDA -->
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="Buscar...">
+  <button id="searchBtn">Buscar</button>
+</div>
+<div id="result"></div>
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const searchBtn = document.getElementById('searchBtn');
+
+  searchBtn.addEventListener('click', () => {
+    const termino = searchInput.value.trim();
+    if (termino) {
+      window.location.href = `resultados.html?q=${encodeURIComponent(termino)}`;
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Sección de Preguntas Frecuentes -->
+    <section id="faq">
+        <h2>Preguntas Frecuentes</h2>
+        <h3>¿Cómo puedo ver las películas y series en CineScope?</h3>
+        <p>En CineScope, no ofrecemos streaming de películas o series, pero te proporcionamos sinopsis detalladas y enlaces a plataformas donde puedes verlas.</p>
+        
+        <h3>¿Cómo puedo buscar una película o serie?</h3>
+        <p>Puedes usar el campo de búsqueda ubicado en la parte superior derecha para encontrar cualquier película o serie por nombre, género o año.</p>
+        
+        <h3>¿Las sinopsis están actualizadas?</h3>
+        <p>Sí, nuestro equipo se asegura de que todas las sinopsis sean lo más actualizadas posible para que siempre estés al tanto de lo que está disponible.</p>
+        
+        <h3>¿Cómo puedo agregar una película o serie a la plataforma?</h3>
+        <p>Actualmente, CineScope solo presenta contenido que hemos seleccionado cuidadosamente. No ofrecemos la posibilidad de agregar películas o series por parte de los usuarios.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 CineScope. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acción - CineScope</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <h1 class="logo">CineScope</h1>
+            <nav class="menu">
+                <a href="index.html">Inicio</a>
+                <a href="peliculas.html">Películas</a>
+                <a href="series.html">Series</a>
+                 <div class="dropdown">
+                    <a href="#">Géneros</a>
+                    <div class="dropdown-content">
+                        <a href="accion.html">Acción</a>
+                        <a href="comedia.html">Comedia</a>
+                        <a href="drama.html">Drama</a>
+                        <a href="terror.html">Terror</a>
+                        <a href="anime.html">Anime</a>
+                        <a href="cienciaficcion.html">Ciencia Ficción</a>
+                        
+                    </div>
+                </div>
+                </div>
+            </nav>
+        </div>
+        
+    </header>
+
+<!-- BARRA DE BUSQUEDA -->
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="Buscar...">
+  <button id="searchBtn">Buscar</button>
+</div>
+<div id="result"></div>
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const searchBtn = document.getElementById('searchBtn');
+
+  searchBtn.addEventListener('click', () => {
+    const termino = searchInput.value.trim();
+    if (termino) {
+      window.location.href = `resultados.html?q=${encodeURIComponent(termino)}`;
+    }
+  });
+</script>
+
+
+
+    <section class="peliculas">
+        <h2>Películas de Acción</h2>
+        <div class="peliculas-grid" id="peliculasGrid">
+            <div class="card"><img src="IMAGENES/Maze runner.png"><h3>Maze runner</h3></div>
+            <div class="card"><img src="IMAGENES/endgame.png"><h3>Avengers :  End Game</h3></div>
+            <div class="card"><img src="IMAGENES/batman.png"><h3>batman</h3></div>
+            <div class="card"><img src="IMAGENES/Capitan america.png"><h3>Capitan america : un nuevo mundo</h3></div>
+            <div class="card"><img src="IMAGENES/rambo.png"><h3>rambo</h3></div>
+            <div class="card"><img src="IMAGENES/estacion zombie.png"><h3>estacion zombie</h3></div>
+            <div class="card hidden"><img src="IMAGENES/Hasta el ultimo hombre.png"><h3>hasta el ultimo hombre </h3></div>
+            <div class="card hidden"><img src="IMAGENES/los 4.png"><h3>Los 4 fantasticos</h3></div>
+            <div class="card hidden"><img src="IMAGENES/prey.png"><h3>PREY</h3></div>
+        </div>
+      
+        <div style="text-align: center; margin-top: 20px;">
+            <button id="verMasBtn">Ver más</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 CineScope. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('verMasBtn');
+        const cards = document.querySelectorAll('.peliculas-grid .card.hidden');
+        let index = 0;
+      
+        btn.addEventListener('click', () => {
+            let mostrados = 0;
+            while (index < cards.length && mostrados < 4) {
+                cards[index].classList.remove('hidden');
+                index++;
+                mostrados++;
+            }
+            if (index >= cards.length) {
+                btn.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

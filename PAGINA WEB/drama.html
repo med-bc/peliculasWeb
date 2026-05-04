@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drama - CineScope</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <h1 class="logo">CineScope</h1>
+            <nav class="menu">
+                <a href="index.html">Inicio</a>
+                <a href="peliculas.html">Películas</a>
+                <a href="series.html">Series</a>
+                <div class="dropdown">
+                    <a href="#">Géneros</a>
+                    <div class="dropdown-content">
+                        <a href="accion.html">Acción</a>
+                        <a href="comedia.html">Comedia</a>
+                        <a href="drama.html">Drama</a>
+                        <a href="terror.html">Terror</a>
+                        <a href="anime.html">Anime</a>
+                        <a href="cienciaficcion.html">Ciencia Ficción</a>
+                       
+                    </div>
+                </div>
+            </nav>
+        </div>
+        
+    </header>
+
+
+
+
+<!-- BARRA DE BUSQUEDA -->
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="Buscar...">
+  <button id="searchBtn">Buscar</button>
+</div>
+<div id="result"></div>
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const searchBtn = document.getElementById('searchBtn');
+
+  searchBtn.addEventListener('click', () => {
+    const termino = searchInput.value.trim();
+    if (termino) {
+      window.location.href = `resultados.html?q=${encodeURIComponent(termino)}`;
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="peliculas">
+        <h2>Películas de Drama</h2>
+        <div class="peliculas-grid" id="peliculasGrid">
+            <div class="card"><img src="IMAGENES/conclave.png"><h3>Conclave</h3></div>
+            <div class="card"><img src="IMAGENES/Parasitos.png"><h3>PARASITOS</h3></div>
+            <div class="card"><img src="IMAGENES/flow.png"><h3>FLOW</h3></div>
+            <div class="card"><img src="IMAGENES/blancanieves.png"><h3>BLANCANIEVES</h3></div>
+            <div class="card"><img src="IMAGENES/spiderman.png"><h3>Spiderman no way home</h3></div>
+            <div class="card"><img src="IMAGENES/Pasion de cristo.png"><h3>LA PASION DE CRISTO</h3></div>
+            <div class="card hidden"><img src="IMAGENES/El hoyo.png"><h3>EL HOYO</h3></div>
+            <div class="card hidden"><img src="IMAGENES/el niño de domo el viento.png"><h3>el niño que domo el viento</h3></div>
+            <div class="card hidden"><img src="IMAGENES/estado electrico.png"><h3>ESTADO ELECTRICO</h3></div>
+        </div>
+      
+        <div style="text-align: center; margin-top: 20px;">
+            <button id="verMasBtn">Ver más</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 CineScope. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('verMasBtn');
+        const cards = document.querySelectorAll('.peliculas-grid .card.hidden');
+        let index = 0;
+      
+        btn.addEventListener('click', () => {
+            let mostrados = 0;
+            while (index < cards.length && mostrados < 4) {
+                cards[index].classList.remove('hidden');
+                index++;
+                mostrados++;
+            }
+            if (index >= cards.length) {
+                btn.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
