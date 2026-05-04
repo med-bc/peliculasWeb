@@ -72,6 +72,17 @@ public class SocialService {
     }
 
     @Transactional
+    public void eliminarResenaAdmin(Long resenaId) {
+        Resena resena = resenaRepository.findById(resenaId)
+                .orElseThrow(() -> new RuntimeException("Resena no encontrada"));
+        resenaRepository.delete(resena);
+    }
+
+    public List<Resena> listarTodasResenas() {
+        return resenaRepository.findAll();
+    }
+
+    @Transactional
     public CalificacionResumenResponse calificar(CalificacionRequest request) {
         if (request.getPuntuacion() == null || request.getPuntuacion() < 1 || request.getPuntuacion() > 5) {
             throw new RuntimeException("La puntuacion debe estar entre 1 y 5");

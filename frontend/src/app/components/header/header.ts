@@ -73,6 +73,10 @@ export class HeaderComponent implements OnInit {
     this.userName = localStorage.getItem('nombreUsuario') || '';
   }
 
+  esAdmin(): boolean {
+    return this.authService.esAdmin();
+  }
+
   buscar() {
     if (!this.terminoBusqueda.trim()) {
       this.resultados = [];

@@ -227,6 +227,23 @@
   gap: 8px;
 }
 
+/* Admin Link */
+.admin-link {
+  padding: 8px 14px;
+  background: linear-gradient(135deg, #e50914 0%, #b20710 100%);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.25s ease;
+}
+
+.admin-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+}
+
 .btn {
   padding: 8px 18px;
   border-radius: 20px;

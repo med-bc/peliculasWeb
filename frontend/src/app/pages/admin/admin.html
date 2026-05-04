@@ -1,0 +1,159 @@
+<div class="admin-container">
+  <div class="admin-header">
+    <h1>Panel de Administración</h1>
+    <p>Gestiona el contenido de CineScope</p>
+  </div>
+
+  <!-- Tabs de navegación -->
+  <div class="admin-tabs">
+    <button 
+      class="tab-btn" 
+      [class.active]="tabActual === 'peliculas'"
+      (click)="cambiarTab('peliculas')"
+    >
+      🎬 Películas
+    </button>
+    <button 
+      class="tab-btn" 
+      [class.active]="tabActual === 'series'"
+      (click)="cambiarTab('series')"
+    >
+      📺 Series
+    </button>
+    <button 
+      class="tab-btn" 
+      [class.active]="tabActual === 'resenas'"
+      (click)="cambiarTab('resenas')"
+    >
+      📝 Reseñas
+    </button>
+  </div>
+
+  <!-- Películas -->
+  <div class="tab-content" *ngIf="tabActual === 'peliculas'">
+    <div class="form-section">
+      <h3>Agregar Nueva Película</h3>
+      <div class="form-grid">
+        <input [(ngModel)]="nuevaPelicula.titulo" placeholder="Título *" class="form-input">
+        <input [(ngModel)]="nuevaPelicula.genero" placeholder="Género *" class="form-input">
+        <input [(ngModel)]="nuevaPelicula.anio" type="number" placeholder="Año" class="form-input">
+        <input [(ngModel)]="nuevaPelicula.imagenUrl" placeholder="URL de imagen" class="form-input">
+        <textarea [(ngModel)]="nuevaPelicula.descripcion" placeholder="Descripción" class="form-input" rows="2"></textarea>
+        <button class="btn-crear" (click)="crearPelicula()">+ Agregar Película</button>
+      </div>
+    </div>
+
+    <div class="list-section">
+      <h3>Películas Existentes ({{ peliculas.length }})</h3>
+      <div class="item-list">
+        <div class="item-card" *ngFor="let pelicula of peliculas">
+          <img [src]="pelicula.imagenUrl || 'https://via.placeholder.com/100x150'" class="item-thumb">
+          
+          <ng-container *ngIf="editandoPeliculaId !== pelicula.id">
+            <div class="item-info">
+              <strong>{{ pelicula.titulo }}</strong>
+              <span>{{ pelicula.genero }} | {{ pelicula.anio }}</span>
+            </div>
+            <div class="item-actions">
+              <button class="btn-edit" (click)="iniciarEdicionPelicula(pelicula)">✏️ Editar</button>
+              <button class="btn-delete" (click)="eliminarPelicula(pelicula.id)">🗑️ Eliminar</button>
+            </div>
+          </ng-container>
+          
+          <ng-container *ngIf="editandoPeliculaId === pelicula.id">
+            <div class="edit-form">
+              <input [(ngModel)]="editandoPelicula.titulo" class="form-input">
+              <input [(ngModel)]="editandoPelicula.genero" class="form-input">
+              <input [(ngModel)]="editandoPelicula.anio" type="number" class="form-input">
+              <input [(ngModel)]="editandoPelicula.descripcion" class="form-input">
+              <input [(ngModel)]="editandoPelicula.imagenUrl" class="form-input">
+              <div class="edit-actions">
+                <button class="btn-save" (click)="guardarPelicula()">💾 Guardar</button>
+                <button class="btn-cancel" (click)="cancelarEdicionPelicula()">❌ Cancelar</button>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Series -->
+  <div class="tab-content" *ngIf="tabActual === 'series'">
+    <div class="form-section">
+      <h3>Agregar Nueva Serie</h3>
+      <div class="form-grid">
+        <input [(ngModel)]="nuevaSerie.titulo" placeholder="Título *" class="form-input">
+        <input [(ngModel)]="nuevaSerie.genero" placeholder="Género *" class="form-input">
+        <input [(ngModel)]="nuevaSerie.anio" type="number" placeholder="Año" class="form-input">
+        <input [(ngModel)]="nuevaSerie.temporadas" type="number" placeholder="Temporadas" class="form-input">
+        <input [(ngModel)]="nuevaSerie.imagenUrl" placeholder="URL de imagen" class="form-input">
+        <textarea [(ngModel)]="nuevaSerie.descripcion" placeholder="Descripción" class="form-input" rows="2"></textarea>
+        <button class="btn-crear" (click)="crearSerie()">+ Agregar Serie</button>
+      </div>
+    </div>
+
+    <div class="list-section">
+      <h3>Series Existentes ({{ series.length }})</h3>
+      <div class="item-list">
+        <div class="item-card" *ngFor="let serie of series">
+          <img [src]="serie.imagenUrl || 'https://via.placeholder.com/100x150'" class="item-thumb">
+          
+          <ng-container *ngIf="editandoSerieId !== serie.id">
+            <div class="item-info">
+              <strong>{{ serie.titulo }}</strong>
+              <span>{{ serie.genero }} | {{ serie.anio }} | {{ serie.temporadas }} temp.</span>
+            </div>
+            <div class="item-actions">
+              <button class="btn-edit" (click)="iniciarEdicionSerie(serie)">✏️ Editar</button>
+              <button class="btn-delete" (click)="eliminarSerie(serie.id)">🗑️ Eliminar</button>
+            </div>
+          </ng-container>
+          
+          <ng-container *ngIf="editandoSerieId === serie.id">
+            <div class="edit-form">
+              <input [(ngModel)]="editandoSerie.titulo" class="form-input">
+              <input [(ngModel)]="editandoSerie.genero" class="form-input">
+              <input [(ngModel)]="editandoSerie.anio" type="number" class="form-input">
+              <input [(ngModel)]="editandoSerie.temporadas" type="number" class="form-input">
+              <input [(ngModel)]="editandoSerie.descripcion" class="form-input">
+              <input [(ngModel)]="editandoSerie.imagenUrl" class="form-input">
+              <div class="edit-actions">
+                <button class="btn-save" (click)="guardarSerie()">💾 Guardar</button>
+                <button class="btn-cancel" (click)="cancelarEdicionSerie()">❌ Cancelar</button>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reseñas -->
+  <div class="tab-content" *ngIf="tabActual === 'resenas'">
+    <div class="list-section">
+      <h3>Todas las Reseñas ({{ resenas.length }})</h3>
+      <div class="item-list">
+        <div class="item-card resena-card" *ngFor="let resena of resenas">
+          <div class="resena-content">
+            <div class="resena-header">
+              <strong>{{ resena.titulo }}</strong>
+              <span class="resena-meta">
+                {{ resena.nombreUsuario }} | 
+                {{ resena.tipoContenido === 'PELICULA' ? '🎬' : '📺' }} 
+                {{ getContenidoTitulo(resena) }} | 
+                {{ resena.fechaCreacion | date:'dd/MM/yyyy' }}
+              </span>
+            </div>
+            <p class="resena-body">{{ resena.comentario }}</p>
+          </div>
+          <div class="item-actions">
+            <button class="btn-delete" (click)="eliminarResena(resena.id)">🗑️ Eliminar</button>
+          </div>
+        </div>
+        
+        <p class="empty-message" *ngIf="resenas.length === 0">No hay reseñas aún.</p>
+      </div>
+    </div>
+  </div>
+</div>

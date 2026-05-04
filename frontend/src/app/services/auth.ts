@@ -37,10 +37,18 @@ login(data: any) {
     return value ? Number(value) : null;
   }
 
-  cerrarSesion() {
+cerrarSesion() {
     localStorage.removeItem('token');
     localStorage.removeItem('usuarioId');
     localStorage.removeItem('nombreUsuario');
     localStorage.removeItem('rol');
+  }
+
+  esAdmin(): boolean {
+    return localStorage.getItem('rol') === 'ADMIN';
+  }
+
+  obtenerRol(): string | null {
+    return localStorage.getItem('rol');
   }
 }

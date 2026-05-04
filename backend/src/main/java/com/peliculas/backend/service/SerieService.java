@@ -24,4 +24,8 @@ public class SerieService {
     public Serie saveSerie(Serie serie) {
         return serieRepository.save(serie);
     }
+
+    public void deleteSerie(Long id) {
+        serieRepository.deleteById(id);
+    }
 }

@@ -29,4 +29,23 @@ public class PeliculaController {
     public Pelicula createPelicula(@RequestBody Pelicula pelicula) {
         return peliculaService.savePelicula(pelicula);
     }
+
+    @PutMapping("/{id}")
+    public Pelicula updatePelicula(@PathVariable Long id, @RequestBody Pelicula pelicula) {
+        Pelicula existente = peliculaService.getPeliculaById(id);
+        if (existente == null) {
+            throw new RuntimeException("Película no encontrada");
+        }
+        existente.setTitulo(pelicula.getTitulo());
+        existente.setDescripcion(pelicula.getDescripcion());
+        existente.setGenero(pelicula.getGenero());
+        existente.setAnio(pelicula.getAnio());
+        existente.setImagenUrl(pelicula.getImagenUrl());
+        return peliculaService.savePelicula(existente);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletePelicula(@PathVariable Long id) {
+        peliculaService.deletePelicula(id);
+    }
 }

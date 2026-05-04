@@ -51,6 +51,19 @@ public class SocialController {
         socialService.eliminarResena(resenaId, usuarioId);
     }
 
+    @DeleteMapping("/resenas/admin/{resenaId}")
+    public void eliminarResenaAdmin(@PathVariable Long resenaId) {
+        socialService.eliminarResenaAdmin(resenaId);
+    }
+
+    @GetMapping("/resenas/todas")
+    public List<ResenaResponse> listarTodasResenas() {
+        return socialService.listarTodasResenas()
+                .stream()
+                .map(ResenaResponse::fromEntity)
+                .toList();
+    }
+
     @PostMapping("/calificaciones")
     public CalificacionResumenResponse calificar(@RequestBody CalificacionRequest request) {
         return socialService.calificar(request);
