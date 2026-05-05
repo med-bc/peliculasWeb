@@ -9,6 +9,8 @@ import { NosotrosComponent } from './pages/nosotros/nosotros';
 import { PerfilComponent } from './pages/perfil/perfil';
 import { DetalleComponent } from './pages/detalle/detalle';
 import { AdminComponent } from './pages/admin/admin';
+import { TerminosComponent } from './pages/terminos/terminos';
+import { PrivacidadComponent } from './pages/privacidad/privacidad';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -21,5 +23,7 @@ export const routes: Routes = [
   { path: 'perfil', component: PerfilComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'detalle/:tipo/:id', component: DetalleComponent },
+  { path: 'terminos', component: TerminosComponent },
+  { path: 'privacidad', component: PrivacidadComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];

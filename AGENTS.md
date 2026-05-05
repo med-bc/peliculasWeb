@@ -29,3 +29,24 @@
 ## Safety and hygiene notes
 - `backend/src/main/resources/application.properties` currently contains a real-looking DB password and username; do not copy this into PR text/issues/logs. Prefer moving secrets to env vars for any security-related task.
 - Build outputs and dependencies (`backend/target`, `frontend/dist`, `frontend/node_modules`, `frontend/.angular/cache`) should not be edited manually.
+
+## Current Progress (May 2026)
+
+### Completed Features
+- Full authentication system (login/register) with JWT
+- Movie and series catalog loaded from Supabase
+- Detail pages (/detalle/:tipo/:id) with reviews, ratings, favorites
+- User profile page (/perfil) showing favorites, reviews, ratings
+- Admin panel (/admin) with CRUD for movies/series and review deletion
+- Admin access restricted to users with rol="ADMIN" in database
+- Search with autocomplete suggestions in header
+- Improved responsive design and spacing
+
+### Pending Tasks
+- Verify admin functionality with actual ADMIN user in database
+- Test CRUD operations (edit/delete movies, series, reviews)
+- End-to-end testing of social features (reviews, ratings, favorites)
+
+### Known Issues
+- CSS budget warnings (non-blocking, build succeeds)
+- Security currently disabled (app.security.enabled=false in application.properties)

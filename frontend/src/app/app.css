@@ -4,8 +4,18 @@
   box-sizing: border-box;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
 :host {
   display: block;
+  width: 100%;
+  height: 100%;
 }
 
 body {
@@ -15,8 +25,9 @@ body {
 }
 
 .main-content {
-  min-height: calc(100vh - 200px);
+  min-height: calc(100vh - 300px);
   background-color: #000;
+  width: 100%;
 }
 
 

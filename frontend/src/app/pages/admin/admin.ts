@@ -23,7 +23,7 @@ interface Serie {
   temporadas: number;
 }
 
-interface Resena {
+interface Resenas {
   id: number;
   usuarioId: number;
   nombreUsuario: string;
@@ -46,7 +46,7 @@ export class AdminComponent implements OnInit {
   
   peliculas: Pelicula[] = [];
   series: Serie[] = [];
-  resenas: Resena[] = [];
+  resenas: Resenas[] = [];
   
   editandoPeliculaId: number | null = null;
   editandoSerieId: number | null = null;
@@ -241,7 +241,7 @@ export class AdminComponent implements OnInit {
     this.tabActual = tab;
   }
 
-  getContenidoTitulo(resena: Resena): string {
+  getContenidoTitulo(resena: Resenas): string {
     if (resena.tipoContenido === 'PELICULA') {
       const p = this.peliculas.find(p => p.id === resena.contenidoId);
       return p?.titulo || 'Película #' + resena.contenidoId;
