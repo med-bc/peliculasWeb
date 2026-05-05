@@ -68,9 +68,6 @@
 
     <!-- Cuando SÍ está logueado -->
     <div class="user-menu-container" *ngIf="isLoggedIn">
-      <!-- Botón Admin visible solo para ADMIN -->
-      <a *ngIf="esAdmin()" routerLink="/admin" class="admin-link">⚙️ Admin</a>
-      
       <button class="user-button" (click)="toggleUserMenu()">
         <span class="user-name">{{ userName }}</span>
         <span class="dropdown-arrow">▾</span>

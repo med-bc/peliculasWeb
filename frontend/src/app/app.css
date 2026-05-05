@@ -4,11 +4,16 @@
   box-sizing: border-box;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
+html {
+  overflow-x: hidden;
   width: 100%;
-  height: 100%;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
   overflow-x: hidden;
 }
 
@@ -18,18 +23,19 @@ html, body {
   height: 100%;
 }
 
-body {
-  background-color: #000;
-  color: #fff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 .main-content {
   min-height: calc(100vh - 300px);
   background-color: #000;
   width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 1;
 }
 
+section, article, main, nav, aside, ul, ol, li, div {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
 ::-webkit-scrollbar {
   width: 10px;
