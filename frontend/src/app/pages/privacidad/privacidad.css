@@ -1,0 +1,68 @@
+.page-container {
+  min-height: calc(100vh - 200px);
+  padding: 40px 20px;
+  background: #000;
+}
+
+.content-card {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #111;
+  border-radius: 10px;
+  padding: 40px;
+  border: 1px solid #222;
+}
+
+.content-card h1 {
+  color: #fff;
+  font-size: 32px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.last-updated {
+  color: #666;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+section h2 {
+  color: #e50914;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+section p, section li {
+  color: #ccc;
+  line-height: 1.8;
+}
+
+section ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+section li {
+  margin-bottom: 8px;
+}
+
+.back-link {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #222;
+  text-align: center;
+}
+
+.back-link a {
+  color: #e50914;
+  text-decoration: none;
+}
+
+.back-link a:hover {
+  text-decoration: underline;
+}

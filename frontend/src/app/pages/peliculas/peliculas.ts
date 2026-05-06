@@ -1,13 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { CatalogoService, Pelicula } from '../../services/catalogo';
 
 @Component({
   selector: 'app-peliculas',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './peliculas.html',
   styleUrl: './peliculas.css'
 })
-export class PeliculasComponent {
-  peliculas = Array(20).fill(null).map((_, i) => ({ id: i + 1, titulo: `Película ${i + 1}` }));
+export class PeliculasComponent implements OnInit {
+  peliculas: Pelicula[] = [];
+
+  constructor(private catalogoService: CatalogoService) {}
+
+  ngOnInit() {
+    this.catalogoService.listarPeliculas().subscribe({
+      next: (data) => (this.peliculas = data),
+      error: () => alert('No se pudo cargar el catalogo de peliculas')
+    });
+  }
 }

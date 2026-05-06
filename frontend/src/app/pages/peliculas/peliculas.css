@@ -16,35 +16,6 @@
   padding-bottom: 15px;
 }
 
-.filter-section {
-  display: flex;
-  gap: 15px;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
-
-.filter-select,
-.filter-search {
-  padding: 10px 15px;
-  border-radius: 5px;
-  border: 1px solid #e50914;
-  background-color: #222;
-  color: #fff;
-  font-size: 1em;
-}
-
-.filter-select:focus,
-.filter-search:focus {
-  outline: none;
-  border-color: #ff3333;
-  box-shadow: 0 0 10px rgba(229, 9, 20, 0.3);
-}
-
-.filter-search {
-  flex: 1;
-  min-width: 200px;
-}
-
 .grid-peliculas {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -69,11 +40,7 @@
 .pelicula-image {
   width: 100%;
   aspect-ratio: 2/3;
-  background: linear-gradient(135deg, #333 0%, #222 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #666;
+  object-fit: cover;
 }
 
 .pelicula-card h3 {
@@ -83,25 +50,20 @@
   font-size: 1em;
   text-align: center;
   background-color: #1a1a1a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .pelicula-card:hover h3 {
   color: #e50914;
 }
 
-.btn-detalles {
-  width: 100%;
-  padding: 10px;
-  background-color: #e50914;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s;
-}
-
-.btn-detalles:hover {
-  background-color: #ff3333;
+.sin-resultados {
+  text-align: center;
+  color: #666;
+  font-size: 1.2rem;
+  padding: 40px;
 }
 
 @media (max-width: 768px) {

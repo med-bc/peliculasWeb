@@ -13,10 +13,22 @@ public class Pelicula {
     private Long id;
 
     private String titulo;
-    private String imagenUrl; // URL de la imagen
+    private String imagenUrl; // hay q cambiarla por supa
     private String descripcion;
     private String genero;
     private int anio;
+
+    public Pelicula() {
+    }
+
+    public Pelicula(Long id, String titulo, String imagenUrl, String descripcion, String genero, int anio) {
+        this.id = id;
+        this.titulo = titulo;
+        this.imagenUrl = imagenUrl;
+        this.descripcion = descripcion;
+        this.genero = genero;
+        this.anio = anio;
+    }
 
     // Getters y Setters
     public Long getId() { return id; }

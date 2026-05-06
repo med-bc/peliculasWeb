@@ -10,8 +10,12 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(data: any) {
+login(data: any) {
     return this.http.post<any>(`${this.API}/login`, data);
+  }
+
+  register(usuario: any) {
+    return this.http.post<any>(`${this.API}`, usuario);
   }
 
   guardarToken(token: string) {
@@ -20,5 +24,31 @@ export class AuthService {
 
   obtenerToken() {
     return localStorage.getItem('token');
+  }
+
+  guardarSesion(usuarioId: number, nombreUsuario: string, rol: string) {
+    localStorage.setItem('usuarioId', String(usuarioId));
+    localStorage.setItem('nombreUsuario', nombreUsuario);
+    localStorage.setItem('rol', rol);
+  }
+
+  obtenerUsuarioId(): number | null {
+    const value = localStorage.getItem('usuarioId');
+    return value ? Number(value) : null;
+  }
+
+cerrarSesion() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('usuarioId');
+    localStorage.removeItem('nombreUsuario');
+    localStorage.removeItem('rol');
+  }
+
+  esAdmin(): boolean {
+    return localStorage.getItem('rol') === 'ADMIN';
+  }
+
+  obtenerRol(): string | null {
+    return localStorage.getItem('rol');
   }
 }

@@ -29,4 +29,24 @@ public class SerieController {
     public Serie createSerie(@RequestBody Serie serie) {
         return serieService.saveSerie(serie);
     }
+
+    @PutMapping("/{id}")
+    public Serie updateSerie(@PathVariable Long id, @RequestBody Serie serie) {
+        Serie existente = serieService.getSerieById(id);
+        if (existente == null) {
+            throw new RuntimeException("Serie no encontrada");
+        }
+        existente.setTitulo(serie.getTitulo());
+        existente.setDescripcion(serie.getDescripcion());
+        existente.setGenero(serie.getGenero());
+        existente.setAnio(serie.getAnio());
+        existente.setTemporadas(serie.getTemporadas());
+        existente.setImagenUrl(serie.getImagenUrl());
+        return serieService.saveSerie(existente);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteSerie(@PathVariable Long id) {
+        serieService.deleteSerie(id);
+    }
 }

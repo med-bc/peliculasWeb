@@ -2,13 +2,13 @@ package com.peliculas.backend.controller;
 
 import com.peliculas.backend.service.JwtService;
 import com.peliculas.backend.dto.LoginRequest;
+import com.peliculas.backend.dto.LoginResponse;
 import com.peliculas.backend.model.Usuario;
 import com.peliculas.backend.service.UsuarioService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/usuarios")
@@ -30,11 +30,10 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-        public Map<String, String> login(@RequestBody LoginRequest request) {
+        public LoginResponse login(@RequestBody LoginRequest request) {
         Usuario usuario = usuarioService.login(request.getEmail(), request.getContrasena());
         String token = jwtService.generarToken(usuario.getEmail(), usuario.getRol());
-
-        return Map.of("token", token);
+        return new LoginResponse(token, usuario.getId(), usuario.getNombreUsuario(), usuario.getRol());
     }
 
     @GetMapping

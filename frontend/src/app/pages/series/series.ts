@@ -1,13 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { CatalogoService, Serie } from '../../services/catalogo';
 
 @Component({
   selector: 'app-series',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './series.html',
   styleUrl: './series.css'
 })
-export class SeriesComponent {
-  series = Array(20).fill(null).map((_, i) => ({ id: i + 1, titulo: `Serie ${i + 1}` }));
+export class SeriesComponent implements OnInit {
+  series: Serie[] = [];
+
+  constructor(private catalogoService: CatalogoService) {}
+
+  ngOnInit() {
+    this.catalogoService.listarSeries().subscribe({
+      next: (data) => (this.series = data),
+      error: () => alert('No se pudo cargar el catalogo de series')
+    });
+  }
 }

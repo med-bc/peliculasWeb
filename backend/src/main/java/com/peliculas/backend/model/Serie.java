@@ -19,6 +19,19 @@ public class Serie {
     private int anio;
     private int temporadas;
 
+    public Serie() {
+    }
+
+    public Serie(Long id, String titulo, String imagenUrl, String descripcion, String genero, int anio, int temporadas) {
+        this.id = id;
+        this.titulo = titulo;
+        this.imagenUrl = imagenUrl;
+        this.descripcion = descripcion;
+        this.genero = genero;
+        this.anio = anio;
+        this.temporadas = temporadas;
+    }
+
     // Getters y Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }

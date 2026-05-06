@@ -24,4 +24,8 @@ public class PeliculaService {
     public Pelicula savePelicula(Pelicula pelicula) {
         return peliculaRepository.save(pelicula);
     }
+
+    public void deletePelicula(Long id) {
+        peliculaRepository.deleteById(id);
+    }
 }

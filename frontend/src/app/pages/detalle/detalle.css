@@ -1,0 +1,357 @@
+.detalle-container {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+}
+
+.hero {
+  min-height: 500px;
+  background-size: cover;
+  background-position: center top;
+  display: flex;
+  align-items: flex-end;
+  padding: 40px;
+}
+
+.hero-no-image {
+  background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+  min-height: 200px;
+}
+
+.hero-content {
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  align-items: flex-end;
+}
+
+.hero-content-only {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.poster {
+  width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  object-fit: cover;
+}
+
+.hero-info {
+  flex: 1;
+  padding-bottom: 20px;
+}
+
+.hero-info h1 {
+  font-size: 3rem;
+  margin: 0 0 15px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.meta {
+  color: #bbb;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.separador {
+  margin: 0 10px;
+  color: #666;
+}
+
+.rating-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #222;
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.rating-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #e50914;
+}
+
+.rating-label {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.descripcion {
+  color: #ccc;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.acciones {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-favorito {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #333;
+  color: #fff;
+  border: 2px solid #e50914;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.btn-favorito:hover {
+  background: #e50914;
+}
+
+.btn-favorito.active {
+  background: #e50914;
+  border-color: #e50914;
+}
+
+.heart-icon {
+  font-size: 1.2rem;
+}
+
+/* Calificación Section */
+.calificacion-section {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #111;
+  border-radius: 12px;
+}
+
+.calificacion-section h2 {
+  color: #fff;
+  margin: 0 0 20px 0;
+  font-size: 1.5rem;
+}
+
+.stars-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.star {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.star:hover {
+  transform: scale(1.2);
+}
+
+.puntuacion-texto {
+  color: #888;
+  margin-left: 10px;
+}
+
+.btn-calificar {
+  padding: 12px 30px;
+  background: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.btn-calificar:hover {
+  background: #ff3333;
+  transform: translateY(-2px);
+}
+
+/* Reseñas Section */
+.resenas-section {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 30px;
+}
+
+.resenas-section h2 {
+  color: #fff;
+  margin: 0 0 30px 0;
+  font-size: 1.8rem;
+  border-bottom: 3px solid #e50914;
+  padding-bottom: 15px;
+}
+
+.nueva-resena {
+  background: #1a1a1a;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.nueva-resena h3 {
+  color: #fff;
+  margin: 0 0 15px 0;
+  font-size: 1.2rem;
+}
+
+.input-titulo,
+.nueva-resena textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #111;
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.input-titulo::placeholder,
+.nueva-resena textarea::placeholder {
+  color: #666;
+}
+
+.input-titulo:focus,
+.nueva-resena textarea:focus {
+  outline: none;
+  border-color: #e50914;
+}
+
+.nueva-resena textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.btn-publicar {
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #e50914 0%, #b20710 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.btn-publicar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(229, 9, 20, 0.4);
+}
+
+.resenas-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.resena-card {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid #e50914;
+}
+
+.resena-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.usuario {
+  color: #e50914;
+  font-weight: bold;
+}
+
+.fecha {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.resena-titulo {
+  color: #fff;
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+}
+
+.resena-comentario {
+  color: #ccc;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.sin-resenas {
+  text-align: center;
+  color: #666;
+  font-size: 1.1rem;
+  padding: 40px;
+}
+
+/* Cargando */
+.cargando {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  color: #888;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #333;
+  border-top-color: #e50914;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    padding: 20px;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .poster {
+    width: 200px;
+  }
+
+  .hero-info h1 {
+    font-size: 2rem;
+  }
+
+  .descripcion {
+    max-width: 100%;
+  }
+
+  .calificacion-section,
+  .resenas-section {
+    margin: 20px;
+    padding: 20px;
+  }
+}
