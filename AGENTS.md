@@ -3,7 +3,6 @@
 ## Repo shape (do not mix these by accident)
 - `backend/` is the real API (Spring Boot + JPA + Security + JWT).
 - `frontend/` is the real SPA (Angular 20 standalone app).
-- `PAGINA WEB/` is a separate static HTML/CSS/JS site; treat it as legacy/independent unless a task explicitly asks for that folder.
 
 ## Verified run commands
 - Backend dev server (Windows PowerShell): `./mvnw.cmd spring-boot:run` from `backend/`.

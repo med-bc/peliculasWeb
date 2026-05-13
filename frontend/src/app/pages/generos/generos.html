@@ -4,11 +4,17 @@
     <p>Películas y series de {{ genero | lowercase }}</p>
   </div>
 
-  <div class="grid-contenidos">
-    <div class="contenido-card" *ngFor="let contenido of contenidos">
-      <div class="contenido-image"></div>
-      <h3>{{ contenido.titulo }}</h3>
-      <button class="btn-detalles">Ver Detalles</button>
-    </div>
+  <div class="grid-peliculas" *ngIf="!cargando">
+    <ng-container *ngIf="contenidos.length > 0; else sinResultados">
+      <div class="pelicula-card" *ngFor="let contenido of contenidos" [routerLink]="getDetalleLink(contenido)">
+        <img class="pelicula-image" [src]="contenido.imagenUrl" [alt]="contenido.titulo">
+        <h3>{{ contenido.titulo }}</h3>
+      </div>
+    </ng-container>
+    <ng-template #sinResultados>
+      <p class="sin-resultados">No hay contenido disponible en este género.</p>
+    </ng-template>
   </div>
+
+  <p *ngIf="cargando" class="sin-resultados">Cargando contenido...</p>
 </div>
