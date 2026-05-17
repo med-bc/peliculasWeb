@@ -355,3 +355,41 @@
     padding: 20px;
   }
 }
+.votos-resena {
+  display: flex;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.like-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* estado base (gris) */
+.like-icon {
+  color: #bdbdbd;
+  transition: 0.2s;
+}
+
+/* estado activo (rojo) */
+.like-icon.liked {
+  color: #ff2d2d;
+  transform: scale(1.2);
+}
+
+.dislike {
+  color: #bdbdbd;
+  transition: 0.2s;
+}
+
+.dislike.disliked {
+  color: #5b8cff;
+  transform: scale(1.2);
+}

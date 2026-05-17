@@ -137,7 +137,7 @@
         <div class="item-card resena-card" *ngFor="let resena of resenas">
           <div class="resena-content">
             <div class="resena-header">
-              <strong>{{ resena.titulo }}</strong>
+              <strong class="resena-title">{{ resena.titulo }}</strong>
               <span class="resena-meta">
                 {{ resena.nombreUsuario }} | 
                 {{ resena.tipoContenido === 'PELICULA' ? '🎬' : '📺' }} 

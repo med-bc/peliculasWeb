@@ -1,8 +1,8 @@
 package com.peliculas.backend.model;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "resenas")
@@ -11,10 +11,6 @@ public class Resena {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "usuario_id", nullable = false)
-    private Usuario usuario;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_contenido", nullable = false)
@@ -28,6 +24,18 @@ public class Resena {
 
     @Column(nullable = false, length = 2000)
     private String comentario;
+
+    @Column(nullable = false)
+    private Integer likes = 0;
+
+    @Column(nullable = false)
+    private Integer dislikes = 0;
+
+    @Column(name = "user_id", nullable = false)
+    private UUID userId;
+
+    @Column(name = "nombre_usuario", length = 40)
+    private String nombreUsuario;
 
     @Column(name = "fecha_creacion", nullable = false)
     private LocalDateTime fechaCreacion;
@@ -43,14 +51,6 @@ public class Resena {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     public TipoContenido getTipoContenido() {
@@ -85,11 +85,43 @@ public class Resena {
         this.comentario = comentario;
     }
 
+    public Integer getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Integer likes) {
+        this.likes = likes;
+    }
+
+    public Integer getDislikes() {
+        return dislikes;
+    }
+
+    public void setDislikes(Integer dislikes) {
+        this.dislikes = dislikes;
+    }
+
+    public UUID getUserId() {
+        return userId;
+    }
+
+    public void setUserId(UUID userId) {
+        this.userId = userId;
+    }
+
     public LocalDateTime getFechaCreacion() {
         return fechaCreacion;
     }
 
     public void setFechaCreacion(LocalDateTime fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 }

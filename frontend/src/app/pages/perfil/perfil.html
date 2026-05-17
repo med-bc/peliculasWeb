@@ -1,13 +1,31 @@
-<section class="perfil" *ngIf="usuarioId; else sinSesion">
+<section class="perfil" *ngIf="userId; else sinSesion">
   <h1>Mi perfil</h1>
-  <p>Usuario: <strong>{{ nombreUsuario }}</strong></p>
+  <p>
+    Usuario: <strong>{{ nombreUsuario }}</strong>
+  </p>
 
   <div class="bloque">
     <h2>Favoritos</h2>
     <p *ngIf="favoritos.length === 0">Aun no tienes favoritos.</p>
-    <ul *ngIf="favoritos.length > 0">
-      <li *ngFor="let favorito of favoritos">
-        {{ favorito.tipoContenido }} #{{ favorito.contenidoId }}
+    <ul *ngIf="favoritos.length > 0" class="favoritos-list">
+      <li *ngFor="let favorito of favoritos" class="favorito-item">
+        <div class="favorito-content">
+          <img
+            *ngIf="favorito.imagenUrl"
+            [src]="favorito.imagenUrl"
+            [alt]="favorito.titulo"
+            class="favorito-imagen"
+          />
+          <div class="favorito-info">
+            <strong>{{ favorito.titulo }}</strong>
+            <span class="tipo-contenido">{{
+              favorito.tipoContenido === "PELICULA" ? "Película" : "Serie"
+            }}</span>
+          </div>
+        </div>
+        <button (click)="eliminarFavorito(favorito)" class="btn-eliminar">
+          Eliminar
+        </button>
       </li>
     </ul>
   </div>
@@ -16,8 +34,12 @@
     <h2>Mis reseñas</h2>
     <p *ngIf="resenas.length === 0">Aun no has publicado reseñas.</p>
     <article *ngFor="let resena of resenas" class="resena-item">
-      <h3>{{ resena.titulo }}</h3>
-      <p class="meta">{{ resena.fechaCreacion | date:'short' }}</p>
+      <h3 class="resena-titulo">{{ resena.titulo }}</h3>
+      <p class="resena-contenido">
+        {{ resena.tipoContenido === "PELICULA" ? "Pelicula" : "Serie" }}:
+        <strong>{{ getContenidoTitulo(resena) }}</strong>
+      </p>
+      <p class="meta">{{ resena.fechaCreacion | date: "short" }}</p>
       <p>{{ resena.comentario }}</p>
     </article>
   </div>

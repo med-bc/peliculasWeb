@@ -259,8 +259,13 @@ textarea.form-input {
 }
 
 .resena-meta {
-  color: #666;
+  color: #bbb;
   font-size: 0.85rem;
+}
+
+.resena-title {
+  color: #f8f9fa;
+  font-size: 1rem;
 }
 
 .resena-body {
