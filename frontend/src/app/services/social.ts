@@ -8,6 +8,8 @@ export interface Resena {
   id: number;
   userId: string;
   nombreUsuario: string;
+  tipoContenido: TipoContenido;
+  contenidoId: number;
   titulo: string;
   comentario: string;
   fechaCreacion: string;

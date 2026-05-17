@@ -1,6 +1,7 @@
 package com.peliculas.backend.dto;
 
 import com.peliculas.backend.model.Resena;
+import com.peliculas.backend.model.TipoContenido;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -8,6 +9,8 @@ public class ResenaResponse {
     private Long id;
     private UUID userId;
     private String nombreUsuario;
+    private TipoContenido tipoContenido;
+    private Long contenidoId;
     private String titulo;
     private String comentario;
     private int likes;
@@ -20,6 +23,8 @@ public class ResenaResponse {
         response.id = resena.getId();
         response.userId = resena.getUserId();
         response.nombreUsuario = resena.getNombreUsuario();
+        response.tipoContenido = resena.getTipoContenido();
+        response.contenidoId = resena.getContenidoId();
         response.titulo = resena.getTitulo();
         response.comentario = resena.getComentario();
         response.likes = resena.getLikes();
@@ -39,6 +44,14 @@ public class ResenaResponse {
 
     public String getNombreUsuario() {
         return nombreUsuario;
+    }
+
+    public TipoContenido getTipoContenido() {
+        return tipoContenido;
+    }
+
+    public Long getContenidoId() {
+        return contenidoId;
     }
 
     public void setNombreUsuario(String nombreUsuario) {

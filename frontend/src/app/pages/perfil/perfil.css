@@ -79,6 +79,21 @@
   padding-top: 10px;
 }
 
+.resena-titulo {
+  color: #f8f9fa;
+  margin-bottom: 6px;
+}
+
+.resena-contenido {
+  color: #ddd;
+  font-size: 0.95rem;
+  margin: 0 0 6px;
+}
+
+.resena-contenido strong {
+  color: #fff;
+}
+
 .meta {
   color: #bbb;
   font-size: 0.9rem;

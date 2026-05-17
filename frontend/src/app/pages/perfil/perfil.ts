@@ -115,4 +115,14 @@ export class PerfilComponent {
         error: () => alert('No se pudo eliminar el favorito'),
       });
   }
+
+  getContenidoTitulo(resena: Resena): string {
+    if (resena.tipoContenido === 'PELICULA') {
+      const pelicula = this.peliculas.find((p) => p.id === resena.contenidoId);
+      return pelicula ? pelicula.titulo : `Pelicula #${resena.contenidoId}`;
+    }
+
+    const serie = this.series.find((s) => s.id === resena.contenidoId);
+    return serie ? serie.titulo : `Serie #${resena.contenidoId}`;
+  }
 }

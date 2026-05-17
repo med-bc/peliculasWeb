@@ -34,7 +34,11 @@
     <h2>Mis reseñas</h2>
     <p *ngIf="resenas.length === 0">Aun no has publicado reseñas.</p>
     <article *ngFor="let resena of resenas" class="resena-item">
-      <h3>{{ resena.titulo }}</h3>
+      <h3 class="resena-titulo">{{ resena.titulo }}</h3>
+      <p class="resena-contenido">
+        {{ resena.tipoContenido === "PELICULA" ? "Pelicula" : "Serie" }}:
+        <strong>{{ getContenidoTitulo(resena) }}</strong>
+      </p>
       <p class="meta">{{ resena.fechaCreacion | date: "short" }}</p>
       <p>{{ resena.comentario }}</p>
     </article>
